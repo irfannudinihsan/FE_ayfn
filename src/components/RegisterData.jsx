@@ -47,7 +47,7 @@ const RegisterData = () => {
                                     <label htmlFor="exampleInputPassword1">Password</label>
                                     <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" />
                                 </div>
-                                    <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleAPI}><Link to={"/login"}>Register</Link></button>                                     
+                                    <Link to={"/"} type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleAPI}>Register</Link>                                     
                             </form>
                         </div>                       
                 </div>
