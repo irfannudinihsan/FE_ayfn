@@ -16,20 +16,22 @@ const Navbar = () => {
             </button>
                       
         <div className="collapse navbar-collapse" id="navbarSupportedContent">              
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+            <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
                     <Link to={"/trending"} style={{color: 'white', padding:"1rem"}} >Trending</Link>
                 </li>
 
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <Link to={"/category"} style={{color: 'white', padding:"1rem"}} >Category</Link>
-                    </a>
+                    </div>
 
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Kesehatan</a></li>
-                        <li><a className="dropdown-item" href="#">Politik</a></li>
-                        <li><a className="dropdown-item" href="#">Olahraga</a></li>
+                        <li><a className="dropdown-item" href="#">Economy</a></li>
+                        <li><a className="dropdown-item" href="#">Environment</a></li>
+                        <li><a className="dropdown-item" href="#">Health</a></li>
+                        <li><a className="dropdown-item" href="#">Politic</a></li>
+                        <li><a className="dropdown-item" href="#">Other</a></li>
                     </ul>
                 </li>
 
