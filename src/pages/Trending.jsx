@@ -23,7 +23,7 @@ return(
     <div className="card mb-3" style={{maxwidth: 540}}>
         <div className="row g-0">
             {news.map((trending) => {
-                return <div className='col-md-4 mt-2' key={trending.id}>
+                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8' key={trending.id}>
                     <TrendingCard
                         // id={trending.id}
                         image={trending.image}
@@ -34,6 +34,7 @@ return(
             })}
         </div>
     </div>
+    <Footer/>
     </>
 )
 }
