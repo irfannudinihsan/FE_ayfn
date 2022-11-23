@@ -23,6 +23,7 @@ return(
             {news.map((article, id) => {
                 return <div className='col-md-4 mt-2' key={id}>
                     <NewsCard
+                        id={article.id}
                         image={article.image}
                         title={article.title}
                         content={article.content}
