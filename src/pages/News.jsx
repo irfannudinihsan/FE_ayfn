@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 function News() {
     const [isLoading, setIsLoading] = useState(true);
     const [news, setNews] = useState([]);
-    // const navigation = useNavigate();
 
     useEffect(() => {
         axios("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article").then((res) => {

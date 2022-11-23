@@ -12,7 +12,7 @@ const TrendingCard = ({image, title, content}) => {
             <div className="card-body">
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{content}</p>
-              //<p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              {/* <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
             </div>
           </div>
         </div>
