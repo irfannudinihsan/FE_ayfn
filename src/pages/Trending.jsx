@@ -9,7 +9,7 @@ function Trending() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        axios("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article").then((res) => {
+        axios("https://ayfnapi-be30.up.railway.app/news/all/trend").then((res) => {
           setNews(res.data);
           setArticle(false);
         });
@@ -20,10 +20,10 @@ function Trending() {
 return(
     <>
     <Navbar/>
-    <div className="card mb-3" style={{maxwidth: 540}}>
-        <div className="row g-0">
+    <div className="card mb-3 mx-auto" >
+        <div className="mx-auto row g-0" style={{width: "1200px"}}>
             {news.map((trending) => {
-                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8' key={trending.id}>
+                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={trending.id}>
                     <TrendingCard
                         // id={trending.id}
                         image={trending.image}

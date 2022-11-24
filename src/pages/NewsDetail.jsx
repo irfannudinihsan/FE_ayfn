@@ -8,12 +8,10 @@ import { useParams } from "react-router-dom";
 const URL = "https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/"
 
 function NewsDetail () {
-    // const [articleId, setarticleId] = useState(true);
     const params = useParams();
     const {id} = params
     console.log(id)
     const [news, setNews] = useState();
-    // const [detail, setDetail] = useState([]);
     
     useEffect(() => {
     axios.get(URL+id).then((response) => {
@@ -23,11 +21,6 @@ function NewsDetail () {
 
   console.log(news);
 
-//   useEffect(() => {
-//     axios.get(URL).then((response) => {
-//       setDetail(response.data);
-//     });
-//   }, []);
 
     return (
         <>

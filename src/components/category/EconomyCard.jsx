@@ -1,6 +1,4 @@
-import {Link} from "react-router-dom";
-
-const TrendingCard = ({image, title, content}) => {
+const EconomyCard = () => {
     return(
         <>
         <div className="card mb-3">
@@ -16,9 +14,9 @@ const TrendingCard = ({image, title, content}) => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
         </>
     )
 }
 
-export default TrendingCard;
+export default EconomyCard

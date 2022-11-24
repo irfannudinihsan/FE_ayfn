@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { MdLogin } from "react-icons/md";
 
-const Navbar = () => {
+const Navbar = ({id}) => {
     return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
@@ -27,7 +27,7 @@ const Navbar = () => {
                     </div>
 
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Economy</a></li>
+                        <li><Link to={`economy/${id}`}><a className="dropdown-item">Economy</a></Link></li>
                         <li><a className="dropdown-item" href="#">Environment</a></li>
                         <li><a className="dropdown-item" href="#">Health</a></li>
                         <li><a className="dropdown-item" href="#">Politic</a></li>
