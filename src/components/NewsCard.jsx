@@ -10,7 +10,7 @@ return (
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{content}</p>
                     <div className="btn btn-primary">
-                    <Link to={`newsdetail/${id}` } style={{color: 'black'}} >Liat Berita</Link>
+                    <Link to={`newsdetail/${id}` } style={{color: 'white'}} >Liat Berita</Link>
                     {/* <a href="NewsDetail" className="btn btn-dark">Liat Berita</a> */}
                     </div>
                 </div>

@@ -10,7 +10,8 @@ function Trending() {
 
     useEffect(() => {
         axios("https://ayfnapi-be30.up.railway.app/news/all/trend").then((res) => {
-          setNews(res.data);
+        console.log(res)  
+        setNews(res.data);
           setArticle(false);
         });
       }, []);

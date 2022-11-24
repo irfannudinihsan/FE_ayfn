@@ -9,13 +9,13 @@ function Economy(){
     const params = useParams();
     const {id} = params
     console.log(id)
-    const [article, setArticle] = useState(true);
     const [news, setNews] = useState([]);
-
+  
+        
     useEffect(() => {
-        axios("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/").then((res) => {
-          setNews(res.data);
-          setArticle(false);
+        axios("https://ayfnapi-be30.up.railway.app/news/all/trend").then((res) => {
+        console.log(res)  
+        setNews(res.data);
         });
       }, []);
 
