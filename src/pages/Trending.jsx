@@ -9,6 +9,7 @@ function Trending() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
+
         axios("https://ayfnapi-be30.up.railway.app/news/all/trend").then((res) => {
         console.log(res)  
         setNews(res.data);

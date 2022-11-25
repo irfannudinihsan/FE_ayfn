@@ -13,9 +13,9 @@ function Economy(){
   
         
     useEffect(() => {
-        axios("https://ayfnapi-be30.up.railway.app/news/all/trend").then((res) => {
-        console.log(res)  
-        setNews(res.data);
+        axios("https://ayfnapi-be30.up.railway.app/category/1").then((res) => {
+          setNews(res.data);
+          setArticle(false);
         });
       }, []);
 
