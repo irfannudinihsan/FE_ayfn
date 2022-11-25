@@ -1,6 +1,6 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const TrendingCard = ({image, title, content}) => {
+const TrendingCard = ({image, title, content,}) => {
     return(
         <>
         <div className="card mb-3">

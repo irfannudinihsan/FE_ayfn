@@ -13,7 +13,7 @@ function Economy(){
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        axios("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/").then((res) => {
+        axios("https://ayfnapi-be30.up.railway.app/category/1").then((res) => {
           setNews(res.data);
           setArticle(false);
         });
