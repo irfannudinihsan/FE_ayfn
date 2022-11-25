@@ -1,4 +1,4 @@
-const EconomyCard = () => {
+const EconomyCard = ({image, title, content}) => {
     return(
         <>
         <div className="card mb-3">

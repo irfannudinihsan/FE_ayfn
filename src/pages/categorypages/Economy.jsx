@@ -9,9 +9,9 @@ function Economy(){
     const params = useParams();
     const {id} = params
     console.log(id)
-    const [article, setArticle] = useState(true);
     const [news, setNews] = useState([]);
-
+  
+        
     useEffect(() => {
         axios("https://ayfnapi-be30.up.railway.app/category/1").then((res) => {
           setNews(res.data);

@@ -22,16 +22,16 @@ const Navbar = ({id}) => {
                 </li>
 
                 <li className="nav-item dropdown">
-                    <div className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="nav-link dropdown-toggle" href="#" role="button"  aria-expanded="false">
                     <Link to={"/category"} style={{color: 'white', padding:"1rem"}} >Category</Link>
                     </div>
 
                     <ul className="dropdown-menu">
-                        <li><Link to={`economy/${id}`}><a className="dropdown-item">Economy</a></Link></li>
-                        <li><a className="dropdown-item" href="#">Environment</a></li>
-                        <li><a className="dropdown-item" href="#">Health</a></li>
-                        <li><a className="dropdown-item" href="#">Politic</a></li>
-                        <li><a className="dropdown-item" href="#">Other</a></li>
+                        <li><Link to={"economy/:id"}><a className="dropdown-item">Economy</a></Link></li>
+                        <li><Link to={`environment/${id}`}><a className="dropdown-item">Environment</a></Link></li>
+                        <li><Link to={`health/${id}`}><a className="dropdown-item">Health</a></Link></li>
+                        <li><Link to={`Politic/${id}`}><a className="dropdown-item">Politic</a></Link></li>
+                        <li><Link to={`eOther/${id}`}><a className="dropdown-item">Other</a></Link></li>
                     </ul>
                 </li>
 
