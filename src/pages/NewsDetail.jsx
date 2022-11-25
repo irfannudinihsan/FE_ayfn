@@ -4,6 +4,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/Ai";
 
 const URL = "https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/"
 
@@ -38,7 +39,7 @@ function NewsDetail () {
                     />
                 </div>
             </div>
-            ) : <h1>loading</h1>
+            ) : <AiOutlineLoading3Quarters size={100} style={{justifyContent: "center" }}/>
         
         }
         </>
