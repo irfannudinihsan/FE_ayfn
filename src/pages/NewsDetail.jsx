@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/Ai";
 
-const URL = "https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/"
+const URL = "https://ayfnfebe29.up.railway.app/news/all"
 
 function NewsDetail () {
     const params = useParams();
@@ -32,7 +32,7 @@ function NewsDetail () {
                 <div className="berita-body container mx-5 mt-4">
                     <NewsDetailCard
                         title={news.title}
-                        name={news.name}
+                        // name={news.name}
                         createdAt={news.createdAt}
                         image={news.image}
                         content={news.content}

@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
-import EconomyCard from '../../components/category/EconomyCard';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import CategoryCard from '../components/CategoryCard';
 import { useParams } from "react-router-dom";
+import React from "react";
 
-function Economy(){
+const URL = "https://ayfnfebe29.up.railway.app/category"
+
+function Category(){
     const params = useParams();
     const {id} = params
     console.log(id)
@@ -13,9 +16,8 @@ function Economy(){
   
         
     useEffect(() => {
-        axios("https://ayfnapi-be30.up.railway.app/category/1").then((res) => {
-          setNews(res.data);
-          setArticle(false);
+        axios.get(URL+id).then((response) => {
+          setNews(response.data);
         });
       }, []);
 
@@ -23,12 +25,12 @@ function Economy(){
     
     return(
         <>
-            {/* <Navbar/> */}
+            <Navbar/>
             {news ? (
-                <div className="card mb-3 mx-auto" >
+                <div className="card mb-3 mx-auto" key={news.id}>
                 <div className="mx-auto row g-0" style={{width: "1200px"}}>
-                <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={news.id}>
-                    <EconomyCard
+                <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' >
+                    <CategoryCard
                         image={news.image}
                         title={news.title}
                         content={news.content}
@@ -38,11 +40,11 @@ function Economy(){
                 </div>
             ) : <h1>loading</h1>
             
-        }
+            }
     
-            {/* <Footer/> */}
+            <Footer/>
         </>
     )
 }
 
-export default Economy
+export default Category

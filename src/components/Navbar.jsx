@@ -16,7 +16,7 @@ const Navbar = ({id}) => {
                 <span className="navbar-toggler-icon"></span>
             </button>
         
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mx-auto ps-5">
                     <li className="nav-item">
                         <Link to={"/trending"} style={{color: 'white', marginRight:"2rem"}} className="nav-link active" aria-current="page">Trending</Link>
@@ -28,11 +28,11 @@ const Navbar = ({id}) => {
                         </a>
                 
                     <ul className="dropdown-menu">
-                        <li><Link to={"economy/:id"}><a className="dropdown-item">Economy</a></Link></li>
-                        <li><Link to={`environment/${id}`}><a className="dropdown-item">Environment</a></Link></li>
-                        <li><Link to={`health/${id}`}><a className="dropdown-item">Health</a></Link></li>
-                        <li><Link to={`Politic/${id}`}><a className="dropdown-item">Politic</a></Link></li>
-                        <li><Link to={`other/${id}`}><a className="dropdown-item">Other</a></Link></li>
+                        <li><Link to={`category/${id}` }><a className="dropdown-item">Economy</a></Link></li>
+                        <li><Link to={`category/${2}`}><a className="dropdown-item">Environment</a></Link></li>
+                        <li><Link to={`category/${3}`}><a className="dropdown-item">Health</a></Link></li>
+                        <li><Link to={`category/${4}`}><a className="dropdown-item">Politic</a></Link></li>
+                        <li><Link to={`category/${5}`}><a className="dropdown-item">Other</a></Link></li>
                         </ul>
                     </li>
                     
