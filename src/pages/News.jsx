@@ -7,7 +7,7 @@ function News() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        axios("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article").then((res) => {
+        axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
           setNews(res.data);
           setIsLoading(false);
         });

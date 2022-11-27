@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import NewsDetail from "./pages/NewsDetail";
 import Register from './pages/Register';
 import Trending from "./pages/Trending";
-import Economy from "./pages/categorypages/Economy";
+import Category from "./pages/Category";
 import About from "./pages/About";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />
-        <Route path="/economy/:id" element={<Economy />} />
+        <Route path="/category/:id" element={<Category />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

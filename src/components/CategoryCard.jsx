@@ -1,4 +1,4 @@
-const EconomyCard = ({image, title, content}) => {
+const CategoryCard = ({image, title, content}) => {
     return(
         <>
         <div className="card mb-3">
@@ -19,4 +19,4 @@ const EconomyCard = ({image, title, content}) => {
     )
 }
 
-export default EconomyCard
+export default CategoryCard
