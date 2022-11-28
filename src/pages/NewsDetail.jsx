@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/Ai";
 
-const URL = "https://ayfnfebe29.up.railway.app/news/all"
+const URL = "https://ayfnfebe29.up.railway.app/news/detail/"
 
 function NewsDetail () {
     const params = useParams();
