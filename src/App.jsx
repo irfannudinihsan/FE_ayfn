@@ -8,6 +8,7 @@ import NewsDetail from "./pages/NewsDetail";
 import Register from './pages/Register';
 import Trending from "./pages/Trending";
 import Category from "./pages/Category";
+import Asean from "./pages/Asean";
 import About from "./pages/About";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/country/:id" element={<Asean/>} />
         <Route path="/about" element={<About/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
