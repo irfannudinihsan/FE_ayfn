@@ -9,6 +9,9 @@ import Register from './pages/Register';
 import Trending from "./pages/Trending";
 import Category from "./pages/Category";
 import About from "./pages/About";
+import FormData from "./pages/FormData";
+import AddData from "./pages/AddData";
+import EditData from "./pages/EditData";
 
 function App() {
 
@@ -23,6 +26,9 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/data" element={<FormData />} />
+        <Route path="/add" element={<AddData/>}/>
+        <Route path="/edit/:id" element={<EditData/>}/>
       </Routes>
     </>
   )
