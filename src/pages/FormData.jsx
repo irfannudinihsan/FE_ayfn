@@ -14,13 +14,13 @@ const FormData = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article");
+    const response = await axios.get("https://ayfnfebe29.up.railway.app/news/");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/${id}`);
+      await axios.delete(`https://ayfnfebe29.up.railway.app/news/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
@@ -40,7 +40,8 @@ const FormData = () => {
               <th>No</th>
               <th>Title</th>
               <th>Content</th>
-              <th>Name</th>
+              <th>Summary</th>
+              <th>CategoryId</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -50,7 +51,8 @@ const FormData = () => {
                 <td>{index + 1}</td>
                 <td>{user.title}</td>
                 <td>{user.content}</td>
-                <td>{user.name}</td>
+                <td>{user.summary}</td>
+                <td>{user.categoryId}</td>
                 <td>
                   <Link
                     to={`/edit/${user.id}`}>

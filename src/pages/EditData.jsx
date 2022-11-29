@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 const EditData = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [name, setName] = useState("");
+    const [summary, setSummary] = useState("");
     const [categoryId, setCategoryId] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -19,10 +19,11 @@ const EditData = () => {
   const updateData = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/${id}`, {
+      await axios.patch(`https://ayfnfebe29.up.railway.app/news/${id}`, {
         title,
         content,
-        name,
+        summary,
+        categoryId,
       });
       navigate("/");
     } catch (error) {
@@ -31,7 +32,7 @@ const EditData = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/article/${id}`);
+    const response = await axios.get(`https://ayfnfebe29.up.railway.app/news/${id}`);
     setTitle(response.data.title);
     setContent(response.data.content);
     setName(response.data.name);
@@ -58,7 +59,7 @@ const EditData = () => {
           <div className="field">
             <label className="label">Content</label>
             <div className="control">
-              <input
+              <textarea
                 type="text"
                 className="input"
                 value={content}
@@ -68,14 +69,26 @@ const EditData = () => {
             </div>
           </div>
           <div className="field">
-            <label className="label">Name</label>
+            <label className="label">Summary</label>
+            <div className="control">
+              <textarea
+                type="text"
+                className="input"
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+                // placeholder="Email"
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">CategoryId</label>
             <div className="control">
               <input
                 type="text"
                 className="input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                // placeholder="Email"
+                value={categoryId}
+                onChange={(e) => setCategoryId(e.target.value)}
+                // placeholder="Name"
               />
             </div>
           </div>
