@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import './App.css'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Form } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NewsDetail from "./pages/NewsDetail";
@@ -13,6 +13,12 @@ import About from "./pages/About";
 import FormData from "./pages/FormData";
 import AddData from "./pages/AddData";
 import EditData from "./pages/EditData";
+import FormCategory from "./pages/FormCategory";
+import EditCategory from "./pages/EditCategory";
+import AddCategory from "./pages/AddCategory";
+import FormCountry from "./pages/FormCountry";
+import AddCountry from "./pages/AddCountry";
+import EditCountry from "./pages/EditCountry";
 
 function App() {
 
@@ -31,6 +37,12 @@ function App() {
         <Route path="/data" element={<FormData />} />
         <Route path="/add" element={<AddData/>}/>
         <Route path="/edit/:id" element={<EditData/>}/>
+        <Route path="/category" element={<FormCategory />} />
+        <Route path="/addCategory" element={<AddCategory/>}/>
+        <Route path="/editCategory/:id" element={<EditCategory/>}/>
+        <Route path="/country" element={<FormCountry />} />
+        <Route path="/addCountry" element={<AddCountry/>}/>
+        <Route path="/editCountry/:id" element={<EditCountry/>}/>
       </Routes>
     </>
   )
