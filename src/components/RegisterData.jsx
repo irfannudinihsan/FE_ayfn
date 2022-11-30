@@ -1,71 +1,59 @@
-import React, { useState } from 'react'
-import axios from "axios";
-import { Link , useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import { Link } from "react-router-dom";
+import axios from 'axios'
 
-const Register = () => {
-    const [fullName, setFullName] = useState('');
+const RegisterData = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [confPassword, setConfPassword] = useState('');
-    const [msg, setMsg] = useState('');
-    // const history = useHistory();
+    const [name, setName] = useState('');
 
-    const Register = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            await axios.post('https://ayfnfebe29.up.railway.app/auth/register/', {
-                fullName: fullName,
-                email: email,
-                password: password,
-                // confPassword: confPassword
-            });
-            navigate('/login')
-        } catch (error) {
-            if (error.response) {
-                setMsg(error.response.data.msg);
-            }
-        }
+        console.log({email, password, name});
     }
 
-    return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns is-centered">
-                        <div className="column is-4-desktop">
-                            <form onSubmit={Register} className="box">
-                                <p className="has-text-centered">{msg}</p>
-                                
-                                <div className="field mt-5">
-                                    <label className="label">Email</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <label className="label">Password</label>
-                                    <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <label className="label">Full Name</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Name"
-                                            value={fullName} onChange={(e) => setFullName(e.target.value)} />
-                                    </div>
-                                </div>
+    const user = {
+        email: email, setEmail,
+        password: password, setPassword,
+        name: name, setName
+    }
 
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Register</button>
+    const handleAPI =()=>{
+        axios.post(`https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/users`, { user })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                localStorage.setItem("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/users", JSON.stringify(user));
+              })
+    }
+
+    return(
+        <>
+        <div className="container">
+                <div className="row justify-content-center">
+                        <div className="col-md-6">
+                        <h2>Register</h2>
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="name">Name</label>
+                                    <input value={name} onChange={(e) => setName(e.target.value)} type="name" className="form-control" placeholder="Name"  required/>
                                 </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email</label>
+                                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPassword1">Password</label>
+                                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" />
+                                </div>
+                                    <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleAPI}><Link to={"/login"} style={{color: 'white'}}>Register</Link></button>                                     
                             </form>
-                        </div>
-                    </div>
+                        </div>                       
                 </div>
-            </div>
-        </section>
+            </div> 
+        </>
+
     )
 }
 
-export default Register
+export default RegisterData;
