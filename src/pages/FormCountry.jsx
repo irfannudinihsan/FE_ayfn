@@ -6,7 +6,7 @@ import {faEdit,faTrash,faCartPlus,} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const FormData = () => {
+const FormCountry = () => {
   const [users, setUser] = useState([]);
 
   useEffect(() => {
@@ -14,13 +14,13 @@ const FormData = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://ayfnfebe29.up.railway.app/news");
+    const response = await axios.get("https://ayfnfebe29.up.railway.app/country");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://ayfnfebe29.up.railway.app/news/${id}`);
+      await axios.delete(`https://ayfnfebe29.up.railway.app/country/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
@@ -30,18 +30,18 @@ const FormData = () => {
   return (
     <>
     <Navbar/>
-    <h2 style={{textAlign: 'center'}}>Dasboard Berita</h2>
-      <Link to={`/add`} ><FontAwesomeIcon icon={faCartPlus}/>
+    <h2 style={{textAlign: 'center'}}>Dasboard Country</h2>
+      <Link to={`/addCountry`} ><FontAwesomeIcon icon={faCartPlus}/>
           Add New
         </Link>
         <table className="table table-secondary table-striped" style={{textAlign: 'center'}}>
           <thead>
             <tr>
               <th>No</th>
-              <th>Title</th>
-              <th>Content</th>
+              <th>Name</th>
+              {/* <th>Content</th>
               <th>Summary</th>
-              <th>CategoryId</th>
+              <th>CategoryId</th> */}
               <th>Actions</th>
             </tr>
           </thead>
@@ -49,13 +49,13 @@ const FormData = () => {
             {users.map((user, index) => (
               <tr key={user.id}>
                 <td>{index + 1}</td>
-                <td>{user.title}</td>
-                <td>{user.content}</td>
+                <td>{user.name}</td>
+                {/* <td>{user.content}</td>
                 <td>{user.summary}</td>
-                <td>{user.categoryId}</td>
+                <td>{user.categoryId}</td> */}
                 <td>
                   <Link
-                    to={`/edit/${user.id}`}>
+                    to={`/editCountry/${user.id}`}>
                     
                       <FontAwesomeIcon icon={faEdit}/>Edit
                    
@@ -74,4 +74,4 @@ const FormData = () => {
   );
 };
 
-export default FormData;
+export default FormCountry;

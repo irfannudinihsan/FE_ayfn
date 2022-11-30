@@ -4,11 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const EditData = () => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [summary, setSummary] = useState("");
-    const [categoryId, setCategoryId] = useState("");
+const EditCategory = () => {
+    const [name, setName] = useState("");
+    // const [content, setContent] = useState("");
+    // const [summary, setSummary] = useState("");
+    // const [categoryId, setCategoryId] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -19,11 +19,11 @@ const EditData = () => {
   const updateData = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://ayfnfebe29.up.railway.app/news/${id}`, {
-        title,
-        content,
-        summary,
-        categoryId,
+      await axios.patch(`https://ayfnfebe29.up.railway.app/category/${id}`, {
+        name,
+        // content,
+        // summary,
+        // categoryId,
       });
       navigate("/");
     } catch (error) {
@@ -32,11 +32,10 @@ const EditData = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://ayfnfebe29.up.railway.app/news/${id}`);
-    setTitle(response.data.title);
-    setContent(response.data.content);
-    setSummary(response.data.summary);
-    setCategoryId(response.data.categoryId);
+    const response = await axios.get(`https://ayfnfebe29.up.railway.app/category/${id}`);
+    setName(response.data.name);
+    // setContent(response.data.content);
+    // setName(response.data.name);
   };
 
   return (
@@ -46,18 +45,18 @@ const EditData = () => {
       <div className="column is-half">
         <form onSubmit={updateData}>
           <div className="field">
-            <label className="label">Title</label>
+            <label className="label">Name</label>
             <div className="control">
               <input
                 type="text"
                 className="input"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 // placeholder="Name"
               />
             </div>
           </div>
-          <div className="field">
+          {/* <div className="field">
             <label className="label">Content</label>
             <div className="control">
               <textarea
@@ -92,7 +91,7 @@ const EditData = () => {
                 // placeholder="Name"
               />
             </div>
-          </div>
+          </div> */}
           <div className="field">
             <button type="submit" className="button is-success">
               Update
@@ -106,4 +105,4 @@ const EditData = () => {
   );
 };
 
-export default EditData;
+export default EditCategory;
