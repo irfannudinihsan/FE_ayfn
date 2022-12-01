@@ -5,6 +5,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/Ai";
+import BackComponent from "../components/BackComponent";
 
 const URL = "https://ayfnfebe29.up.railway.app/news/detail/"
 
@@ -26,6 +27,7 @@ function NewsDetail () {
     return (
         <>
         <Navbar/>
+        <BackComponent/>
         {
             news ? (
                 <div className="container mt-3" key={news.id}>
