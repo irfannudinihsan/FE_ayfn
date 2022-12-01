@@ -30,7 +30,7 @@ return(
                         id={trending.id}
                         image={trending.image}
                         title={trending.title}
-                        content={trending.content}
+                        summary={trending.summary}
                         categoryName={trending.Category.name}
                         createdAt={trending.createdAt}
                     />
