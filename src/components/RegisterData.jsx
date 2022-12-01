@@ -1,54 +1,119 @@
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios'
-
+import { MdCheckCircle, MdWarning } from 'react-icons/md';
 const RegisterData = () => {
+    const errorRef = useRef();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [fullName, setName] = useState('');
+    const [image, setImage] = useState(null);
+    const [countryId, setCountryId] = useState('');
+    const [countries, setCountries] = useState([]);
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
-    const handleSubmit = (e) => {
+    const clearAllForm = () => {
+        setEmail(''); setCountryId(''); setName(''); setImage(null); setPassword('');
+        document.getElementById('form').reset();
+    }
+
+    const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log({email, password, name});
+        console.log(e.target)
+        const data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('fullName', fullName);
+        data.append('image', image);
+        data.append('countryId', countryId);
+        console.log(data.get('image'))
+        axios.post(`https://ayfnfebe29.up.railway.app/auth/register`,data
+        ).then(res => {
+            console.log(res);
+            console.log(res.data);
+            setSuccess(true);
+            clearAllForm();
+        }).catch(err => {
+            console.log(err.response)
+            if(err.response.status === 401 || err.response.status === 422){
+                setErrMsg('Registration failed! Please fill in all the required fields.');
+            } else {
+                setErrMsg('Error! Something went wrong.');
+            }
+            errorRef.current.focus();
+        })
     }
-
-    const user = {
-        email: email, setEmail,
-        password: password, setPassword,
-        name: name, setName
-    }
-
-    const handleAPI =()=>{
-        axios.post(`https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/users`, { user })
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-                localStorage.setItem("https://6353739ca9f3f34c3752aeb7.mockapi.io/ayf/users", JSON.stringify(user));
-              })
-    }
-
+    
+    useEffect(() => {
+        axios.get(`https://ayfnfebe29.up.railway.app/country`)
+        .then(res => {
+            setCountries(res.data)
+        });
+        setErrMsg('');
+    }, [email, password, fullName, image, countryId]);
+        
+    console.log(countries)
     return(
         <>
-        <div className="container">
+        <div className="container mt-4">
                 <div className="row justify-content-center">
-                        <div className="col-md-6">
+                        <div className="card col-md-7 p-5">
                         <h2>Register</h2>
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="name">Name</label>
-                                    <input value={name} onChange={(e) => setName(e.target.value)} type="name" className="form-control" placeholder="Name"  required/>
+                        {
+                            success ? (
+                                <div className={"alert alert-success alert-dismissible fade show d-flex align-items-center"} aria-live="assertive" role="alert">
+                                    <MdCheckCircle className='me-1' size={25}></MdCheckCircle>
+                                    <strong>Registration success!</strong>&nbsp;Your account has been created. Continue to&nbsp;<Link to={'/login'}>login</Link>&nbsp;page
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="exampleInputPassword1">Password</label>
-                                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" />
-                                </div>
-                                    <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleAPI}><Link to={"/login"} style={{color: 'white'}}>Register</Link></button>                                     
-                            </form>
-                        </div>                       
+                            )
+                            : ''
+                        }
+                        <div ref={errorRef} className={errMsg ? "alert alert-danger d-flex align-items-center" : "d-none"} aria-live="assertive" role="alert">
+                            <MdWarning className='me-1' size={25}></MdWarning>
+                            <div id='error'>
+                                {errMsg}
+                            </div>
+                        </div>
+                        <form onSubmit={onSubmitHandler} id="form">
+                            <div className="form-group">
+                                <label htmlFor="name">Name</label>
+                                <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" className="form-control" placeholder="Name"  required/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Password</label>
+                                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" required/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="image">Image</label>
+                                <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" placeholder="Image Link" required/>
+                            </div>
+                            <div className='form-group'>
+                                <label htmlFor="countries">Country</label>
+                                <select name="countryId" id="countries" className='form-select' onChange={(e) => setCountryId(e.target.value)} required>
+                                    <option value="" selected>Select Country</option>
+                                    {
+                                        countries.map((item, id) => {
+                                            return <option value={item.id}>{item.name}</option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            <div className='mt-3'>
+                                <button type="submit" className="btn btn-primary bg-gradient btn-block me-1">Register</button>
+                                <button type="button" onClick={clearAllForm} className="btn btn-danger bg-gradient btn-block">Reset</button>                                     
+                            </div>
+                            <div className='mt-3'>
+                                Already have an account?&nbsp;<Link to={'/login'}>Login here</Link>
+                            </div>
+                        </form>
+                    </div>                       
                 </div>
             </div> 
         </>

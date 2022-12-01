@@ -1,8 +1,37 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { MdLogin } from "react-icons/md";
+import { MdLogin, MdLogout } from "react-icons/md";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+var countries = [
+    "Kamboja",
+    "Laos",
+    "Malaysia",
+    "Filipina",
+    "Thailand",
+    "Singapura",
+    "Vietnam",
+    "Myanmar",
+    "Indonesia",
+    "Brunei Darussalam",
+];
+
+const Logout = () => {
+    localStorage.clear();
+    location.href='/';
+}
 
 const Navbar = ({id}) => {
+
+    const [countries, setCountries] = useState([]);
+    useEffect(() => {
+        axios.get(`https://ayfnfebe29.up.railway.app/country`)
+        .then(res => {
+            setCountries(res.data)
+        });
+    }, []);
+
     return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
@@ -43,16 +72,9 @@ const Navbar = ({id}) => {
                         </a>
                     
                     <ul className="dropdown-menu">
-                        <li><Link to={`country/${1}`}><a className="dropdown-item" >Kamboja</a></Link></li>
-                        <li><Link to={`country/${2}`}><a className="dropdown-item" >Laos</a></Link></li>
-                        <li><Link to={`country/${3}`}><a className="dropdown-item" >Malaysia</a></Link></li>
-                        <li><Link to={`country/${4}`}><a className="dropdown-item" >Filipina</a></Link></li>
-                        <li><Link to={`country/${5}`}><a className="dropdown-item" >Thailand</a></Link></li>
-                        <li><Link to={`country/${6}`}><a className="dropdown-item" >Singapura</a></Link></li>
-                        <li><Link to={`country/${7}`}><a className="dropdown-item" >Vietnam</a></Link></li>
-                        <li><Link to={`country/${8}`}><a className="dropdown-item" >Myanmar</a></Link></li>
-                        <li><Link to={`country/${9}`}><a className="dropdown-item" >Indonesia</a></Link></li>
-                        <li><Link to={`country/${10}`}><a className="dropdown-item" >Brunei Darussalam</a></Link></li>
+                        {countries.map((item, index) => {
+                            return <li><Link to={`country/${item.id}`}><a className="dropdown-item" >{item.name}</a></Link></li>
+                        })}
                     </ul>
                     </li>
 
@@ -72,9 +94,40 @@ const Navbar = ({id}) => {
                 </li> */}
                           
                 <li className="nav-item">
-                    <Link to={"/login"} style={{color: 'white'}} className="nav-link active">Login
-                        <MdLogin size={27} style={{color: 'white', marginRight:"1rem"}}/>
-                    </Link>
+                    {
+                    localStorage.getItem('token') 
+                    ?
+                        <>
+                        <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
+                            Logout <MdLogout size={27} style={{color: 'white', marginRight:"1rem"}}/>
+                        </button>
+                        
+                        <div className="modal fade" id="logout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="logoutLabel">Konfirmasi Logout</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    Apakah kamu yakin untuk logout?
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <button type="button" className="btn btn-primary" onClick={Logout}>Konfirmasi</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </> 
+                    :
+                        <>
+                            <Link to={"/login"} style={{color: 'white'}} className="nav-link active">Login
+                                <MdLogin size={27} style={{color: 'white', marginRight:"1rem"}}/>
+                            </Link>
+                        </>
+                    }
                 </li>         
             </ul>
         </div>
