@@ -41,6 +41,11 @@ const EditCountry = () => {
   return (
     <>
     <Navbar/>
+    <div className="container">
+      <div className="row">
+      <div className="flex items-center justify-between my-4">
+        <h2>Edit Data</h2>
+      </div>
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
         <form onSubmit={updateData}>
@@ -92,13 +97,17 @@ const EditCountry = () => {
               />
             </div>
           </div> */}
-          <div className="field">
-            <button type="submit" className="button is-success">
-              Update
-            </button>
+          <div className="mb-2">
+            <button type="submit" className="btn btn-primary">Create</button>
           </div>
+
+          {/* <div className="mb-2">
+            <Link to={"/"} type="submit" className="btn btn-secondary">Back</Link>
+          </div> */}
         </form>
       </div>
+    </div>
+    </div>
     </div>
     <Footer/>
     </>

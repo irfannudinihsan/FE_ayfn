@@ -1,4 +1,4 @@
-import {MdArrowBack} from "react-icons/Md"
+import {MdArrowBack} from "react-icons/md"
 import { Link } from "react-router-dom";
 
 const BackComponent = () => {

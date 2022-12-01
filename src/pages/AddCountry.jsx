@@ -30,6 +30,11 @@ const AddCountry = () => {
   return (
     <>
     <Navbar/>
+    <div className="container">
+      <div className="row">
+      <div className="flex items-center justify-between my-4">
+        <h2>Create Data</h2>
+      </div>
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
         <form onSubmit={saveData}>
@@ -81,13 +86,17 @@ const AddCountry = () => {
               />
             </div>
           </div> */}
-          <div className="field">
-            <button type="submit" className="button is-success">
-              Save
-            </button>
+          <div className="mb-2">
+            <button type="submit" className="btn btn-primary">Create</button>
           </div>
+
+          {/* <div className="mb-2">
+            <Link to={"/"} type="submit" className="btn btn-secondary">Back</Link>
+          </div> */}
         </form>
       </div>
+    </div>
+    </div>
     </div>
     <Footer/>
     </>
