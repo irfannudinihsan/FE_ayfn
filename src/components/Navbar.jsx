@@ -100,7 +100,7 @@ const Navbar = ({id}) => {
                     ?
                         <>
                         {/* <button className="btn nav-link text-white" > */}
-                            <Link to={"/formdata"} style={{color: 'white'}} className="nav-link active" >Create Data</Link>
+                            <Link to={"/data"} style={{color: 'white'}} className="nav-link active" >Create Data</Link>
                         {/* </button> */}
 
                         <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
