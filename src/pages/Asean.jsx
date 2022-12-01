@@ -36,7 +36,9 @@ function Asean(){
                         id={asean.id}
                         image={asean.image}
                         title={asean.title}
-                        content={asean.content}
+
+                        summary={asean.summary}
+
                         categoryName={asean.Category.name}
                         createdAt={asean.createdAt}
                     />

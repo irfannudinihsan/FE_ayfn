@@ -36,7 +36,9 @@ function Category(){
                         id={category.id}
                         image={category.image}
                         title={category.title}
-                        content={category.content}
+
+                        summary={category.summary}
+
                         categoryName={category.Category.name}
                         createdAt={category.createdAt}
                     />

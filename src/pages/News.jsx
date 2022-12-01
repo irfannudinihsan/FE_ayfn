@@ -26,7 +26,7 @@ return(
                         id={article.id}
                         image={article.image}
                         title={article.title}
-                        content={article.content}
+                        summary={article.summary}
                     />
                 </div>
             })}
