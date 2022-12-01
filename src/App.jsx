@@ -19,6 +19,7 @@ import AddCategory from "./pages/AddCategory";
 import FormCountry from "./pages/FormCountry";
 import AddCountry from "./pages/AddCountry";
 import EditCountry from "./pages/EditCountry";
+import TrendingDetail from "./pages/TrendingDetail";
 
 function App() {
 
@@ -28,7 +29,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/newsdetail/:id" element={<NewsDetail />} />
-        <Route path="/trending" element={<Trending />} />
+        <Route path="/trending/" element={<Trending />} >
+          <Route path=":id" element={<TrendingDetail/>} />
+        </Route>
         <Route path="/category/:id" element={<Category />} />
         <Route path="/country/:id" element={<Asean/>} />
         <Route path="/about" element={<About/>}/>
