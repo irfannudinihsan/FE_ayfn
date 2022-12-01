@@ -1,107 +1,82 @@
-import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
-import logo from "../assets/logo.png";
-// import "../assets/css/Sign.css";
+import {useEffect, useRef, useState} from 'react';
+import { Link } from "react-router-dom";
+import axios from 'axios';
+import { MdWarning } from 'react-icons/md';
 
-function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
+function Login ()  {
+    const errorRef = useRef();
 
-  const url =
-    "https://ayfnfebe29.up.railway.app/auth/login";
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
 
-  const changeEmail = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log({email, password});
+        axios.post(`https://ayfnfebe29.up.railway.app/auth/login`, { 
+        email: email,
+        password: password,
+     })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+        location.href='/';
+      }).catch(err => {
+        console.log(err.response.status)
+        if(err.response.status === 401){
+            setErrMsg('Login failed! Incorrect Email or Password.');
+        }
+        else {
+            setErrMsg('Error! Something went wrong.');
+        }
+        errorRef.current.focus();
+      })
+    }   
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, password])
 
-  const changePassword = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-  };
+    // const user = {
+    //     email: email, setEmail,
+    //     password: password, setPassword
+    // }
+    //   .catch(error=>{
+    //     alert('service error')
+    //     console.log(error)
+    //   })
+        return (
+            <div className="container mt-5">
+                <div className="row justify-content-center">
+                    <div className="card col-md-6 p-5">
+                    <h2>Login</h2>
+                    <div ref={errorRef} className={errMsg ? "alert alert-danger d-flex align-items-center" : "d-none"} aria-live="assertive" role="alert">
+                        <MdWarning className='me-1' size={25}></MdWarning>
+                        <div id='error'>
+                            {errMsg}
+                        </div>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group mb-2">
+                            <label htmlFor="email">Email</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
+                        </div>
+                        <div className="form-group mb-2">
+                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" />
+                        </div>
+                        <div className="form-check mb-2">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+                            <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
+                        </div>
+                        <button className="btn btn-primary bg-gradient btn-block" type="submit">Login</button>    
+                    </form>
+                    <p className='my-2'>Don't have an account? <Link to={"/register"}>Register here</Link></p> 
+                    </div>
+                </div>
+            </div> 
+         );
+    }
 
-  const loginbtn = (e) => {
-    e.preventDefault();
-    const data = {
-      email: email,
-      password: password,
-    };
-    axios.post(url, data).then((result) => {
-      if (result) {
-        localStorage.setItem("token", result.data.token);
-        setRedirect(true);
-      }
-    });
-  };
-
-  return (
-    <React.Fragment>
-      {redirect && <Navigate to="/" />}
-      <div className="wrapper">
-        <div className="auth-box">
-          <div className="auth-header">
-            <div className="auth-header-logo">
-              <img src={logo} alt="" className="auth-header-logo-img" />
-            </div>
-            <h1 className="auth-header-title">Welcome to Dis-Help</h1>
-            <p className="auth-header-subtitle">Login terlebih dahulu.</p>
-          </div>
-          <div className="auth-body">
-            <form action="" className="auth-form-validation">
-              <div className="input-field">
-                <label htmlFor="" className="input-label">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  className="input-control"
-                  name="email"
-                  id="email"
-                  value={email}
-                  onChange={changeEmail}
-                  placeholder="contoh@gmail.com"
-                  autoComplete="off"
-                  required
-                />
-              </div>
-              <div className="input-field">
-                <label htmlFor="" className="input-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="input-control"
-                  name="password"
-                  id="password"
-                  value={password}
-                  onChange={changePassword}
-                  placeholder="Password"
-                  autoComplete="off"
-                  required
-                />
-              </div>
-              <div className="flex-end">
-                <Link to={"/forgot-password"} className="link-end">
-                  Forgot Password ?
-                </Link>
-              </div>
-              <button type="submit" className="btn-submit" onClick={loginbtn}>
-                Login
-              </button>
-            </form>
-            <p className="text-center">
-              Tidak punya Akun ?
-              <Link to={"/signup"} className="link-text-center">
-                Buat Akun
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
-  );
-}
-
-export default Signin;
+ 
+export default Login ;
