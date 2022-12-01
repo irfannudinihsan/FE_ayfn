@@ -58,7 +58,7 @@ const Navbar = ({id}) => {
                         </span>
                 
                     <ul className="dropdown-menu">
-                        <li><Link to={`category/${1}` }><a className="dropdown-item">Economy</a></Link></li>
+                        <li><Link to={`category/${1}`}><a className="dropdown-item">Economy</a></Link></li>
                         <li><Link to={`category/${2}`}><a className="dropdown-item">Environment</a></Link></li>
                         <li><Link to={`category/${3}`}><a className="dropdown-item">Health</a></Link></li>
                         <li><Link to={`category/${4}`}><a className="dropdown-item">Politic</a></Link></li>

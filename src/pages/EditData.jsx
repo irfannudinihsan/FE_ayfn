@@ -19,7 +19,7 @@ const EditData = () => {
   const updateData = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://ayfnfebe29.up.railway.app/news/${id}`, {
+      await axios.patch(`/news/${id}`, {
         title,
         content,
         summary,
@@ -32,7 +32,7 @@ const EditData = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://ayfnfebe29.up.railway.app/news/${id}`);
+    const response = await axios.get(`/news/${id}`);
     setTitle(response.data.title);
     setContent(response.data.content);
     setSummary(response.data.summary);

@@ -14,8 +14,16 @@ const FormCategory = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://ayfnfebe29.up.railway.app/category");
-    setUser(response.data);
+      var config = {
+        method: 'get',
+        url: `/news`,
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        },
+      };
+      const response = await axios(config);
+      setUser(response.data);
   };
 
   const deleteUser = async (id) => {

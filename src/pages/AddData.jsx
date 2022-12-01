@@ -14,7 +14,7 @@ const AddData = () => {
   const saveData = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://ayfnfebe29.up.railway.app/news/", {
+      await axios.post("/news", {
         title,
         content,
         summary,

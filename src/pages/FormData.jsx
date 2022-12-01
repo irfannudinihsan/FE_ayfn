@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+
+import { Link, Navigate } from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit,faTrash,faCartPlus,} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "../libs/axios";
 
 const FormData = () => {
   const [users, setUser] = useState([]);
@@ -14,18 +15,43 @@ const FormData = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://ayfnfebe29.up.railway.app/news");
+    const response = await axios.get("/news");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://ayfnfebe29.up.railway.app/news/${id}`);
+      await axios.delete(`/news/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
     }
+
+  var config = {
+    method: 'post',
+    url: `/news`,
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+
+    },
   };
+
+  axios(config)
+  .then(function (response) {
+    log('ini respon create: ', response);
+    swal({
+      title: "Program berhasil dibuat!",
+      icon: "success",
+      button: "OK!",
+    });
+    Navigate('/organization')
+  })
+  // .catch(function (eror) {
+  //   log('ini eror create: ', error);
+  // });
+  };
+
+
 
   return (
     <>
