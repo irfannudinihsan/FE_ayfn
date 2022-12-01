@@ -5,7 +5,8 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/Ai";
-import BackComponent from "../components/BackComponent";
+import {MdArrowBack} from "react-icons/md"
+import { Link } from "react-router-dom";
 
 const URL = "https://ayfnfebe29.up.railway.app/news/detail/"
 
@@ -27,7 +28,11 @@ function TrendingDetail () {
     return (
         <>
         <Navbar/>
-        <BackComponent/>
+        <div className="container mt-4">
+        <Link to={"/trending"}>
+            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
+        </Link>
+        </div>
         {
             news ? (
                 <div className="container mt-3" key={news.id}>
@@ -35,6 +40,8 @@ function TrendingDetail () {
                     <TrendingDetailCard
                         title={news.title}
                         createdAt={news.createdAt}
+                        countryName={news.Country.name}
+                        userDetailFullname={news.User.UserDetail.fullName}
                         image={news.image}
                         content={news.content}
                     />

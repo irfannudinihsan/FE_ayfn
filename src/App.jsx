@@ -20,6 +20,8 @@ import FormCountry from "./pages/FormCountry";
 import AddCountry from "./pages/AddCountry";
 import EditCountry from "./pages/EditCountry";
 import TrendingDetail from "./pages/TrendingDetail";
+import CategoryDetail from "./pages/CategoryDetail";
+import AseanDetail from "./pages/AseanDetail";
 
 function App() {
 
@@ -29,11 +31,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/newsdetail/:id" element={<NewsDetail />} />
-        <Route path="/trending/" element={<Trending />} >
-          <Route path=":id" element={<TrendingDetail/>} />
-        </Route>
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/trending/:id" element={<TrendingDetail/>} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/category/:id/:id" element={<CategoryDetail />} />
         <Route path="/country/:id" element={<Asean/>} />
+        <Route path="/country/:id/:id" element={<AseanDetail />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

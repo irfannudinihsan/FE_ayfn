@@ -20,8 +20,9 @@ return(
     <div className='container my-3'>
         <div className='row'>
             {news.map((article, id) => {
-                return <div className='col-md-4 mt-2' key={id}>
+                return <div className='col-md-4 mt-2' >
                     <NewsCard
+                        key={id}
                         id={article.id}
                         image={article.image}
                         title={article.title}

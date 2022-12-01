@@ -29,22 +29,21 @@ function Category(){
         <>
             <Navbar/>
             <div className="card mb-3 mx-auto" >
-                <div className="mx-auto row g-0">
-                {news.map((article, id) =>{
-                    return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={id} >
+            <div className="mx-auto row g-0">
+            {news.map((category) => {
+                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={category.id}>
                     <CategoryCard
-                        id={article.id}
-                        image={article.image}
-                        title={article.title}
-                        content={article.content}
+                        id={category.id}
+                        image={category.image}
+                        title={category.title}
+                        content={category.content}
+                        categoryName={category.Category.name}
+                        createdAt={category.createdAt}
                     />
                 </div>
-
-                }
-                )}
-                
-                </div>
-                </div>
+            })}
+            </div>
+            </div>
           <Footer/>
         </>
     )
