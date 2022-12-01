@@ -42,6 +42,11 @@ const EditData = () => {
   return (
     <>
     <Navbar/>
+    <div className="container">
+      <div className="row">
+      <div className="flex items-center justify-between my-4">
+        <h2>Create Data</h2>
+      </div>
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
         <form onSubmit={updateData}>
@@ -100,6 +105,8 @@ const EditData = () => {
           </div>
         </form>
       </div>
+    </div>
+    </div>
     </div>
     <Footer/>
     </>
