@@ -88,7 +88,7 @@ const RegisterData = () => {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Password</label>
-                                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" required/>
+                                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Min.8 letters" required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="image">Image</label>
