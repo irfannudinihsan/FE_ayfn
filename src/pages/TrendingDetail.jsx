@@ -1,4 +1,4 @@
-import NewsDetailCard from "../components/NewsDetailCard";
+import TrendingDetailCard from "../components/TrendingDetailCard";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import React from "react";
@@ -9,7 +9,7 @@ import BackComponent from "../components/BackComponent";
 
 const URL = "https://ayfnfebe29.up.railway.app/news/detail/"
 
-function NewsDetail () {
+function TrendingDetail () {
     const params = useParams();
     const {id} = params
     console.log(id)
@@ -32,9 +32,8 @@ function NewsDetail () {
             news ? (
                 <div className="container mt-3" key={news.id}>
                 <div className="berita-body container mx-5 mt-4">
-                    <NewsDetailCard
+                    <TrendingDetailCard
                         title={news.title}
-                        // UserDetail_fullname={news.UserDetail_fullname}
                         createdAt={news.createdAt}
                         image={news.image}
                         content={news.content}
@@ -48,4 +47,4 @@ function NewsDetail () {
     )
 }
 
-export default NewsDetail;
+export default TrendingDetail;

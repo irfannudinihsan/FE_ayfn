@@ -1,6 +1,6 @@
 import { format, parseISO } from "date-fns";
 
-const NewsDetailCard = ({title, createdAt, image, content, UserDetail_fullname}) => {
+const TrendingDetailCard = ({title, createdAt, image, content}) => {
     return (
         <>
             <div className="container mt-3">
@@ -16,4 +16,4 @@ const NewsDetailCard = ({title, createdAt, image, content, UserDetail_fullname})
     )
 }
 
-export default NewsDetailCard;
+export default TrendingDetailCard;

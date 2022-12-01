@@ -30,11 +30,6 @@ const About = () => {
                 </div>
             </div>
         </div>
-        {/* <div classNameName="container-md">
-            <div classNameName="">
-            <h2>About Us</h2>
-            </div>
-        </div> */}
         <Footer/>
         </>
     )

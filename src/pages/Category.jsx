@@ -12,12 +12,14 @@ function Category(){
     const params = useParams();
     const {id} = params
     console.log(id)
+    const [isLoading, setIsLoading] = useState(true);
     const [news, setNews] = useState([]);
   
         
     useEffect(() => {
         axios.get(URL+id).then((response) => {
           setNews(response.data);
+          setIsLoading(false);
         });
       }, []);
 
@@ -26,23 +28,24 @@ function Category(){
     return(
         <>
             <Navbar/>
-            {news ? (
-                <div className="card mb-3 mx-auto" key={news.id}>
-                <div className="mx-auto row g-0" style={{width: "1200px"}}>
-                <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' >
+            <div className="card mb-3 mx-auto" >
+                <div className="mx-auto row g-0">
+                {news.map((article, id) =>{
+                    return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={id} >
                     <CategoryCard
-                        image={news.image}
-                        title={news.title}
-                        content={news.content}
+                        id={article.id}
+                        image={article.image}
+                        title={article.title}
+                        content={article.content}
                     />
                 </div>
+
+                }
+                )}
+                
                 </div>
                 </div>
-            ) : <h1>loading</h1>
-            
-            }
-    
-            <Footer/>
+          <Footer/>
         </>
     )
 }

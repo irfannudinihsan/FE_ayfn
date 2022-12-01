@@ -43,16 +43,16 @@ const Navbar = ({id}) => {
                         </a>
                     
                     <ul className="dropdown-menu">
-                        <li><Link to={`country/${1}`}><a className="dropdown-item" >Kamboja</a></Link></li>
-                        <li><Link to={`country/${2}`}><a className="dropdown-item" >Laos</a></Link></li>
-                        <li><Link to={`country/${3}`}><a className="dropdown-item" >Malaysia</a></Link></li>
-                        <li><Link to={`country/${4}`}><a className="dropdown-item" >Filipina</a></Link></li>
-                        <li><Link to={`country/${5}`}><a className="dropdown-item" >Thailand</a></Link></li>
-                        <li><Link to={`country/${6}`}><a className="dropdown-item" >Singapura</a></Link></li>
-                        <li><Link to={`country/${7}`}><a className="dropdown-item" >Vietnam</a></Link></li>
-                        <li><Link to={`country/${8}`}><a className="dropdown-item" >Myanmar</a></Link></li>
-                        <li><Link to={`country/${9}`}><a className="dropdown-item" >Indonesia</a></Link></li>
-                        <li><Link to={`country/${10}`}><a className="dropdown-item" >Brunei Darussalam</a></Link></li>
+                        <li><Link to={`country/${1}`}><a className="dropdown-item" >Brunei Darussalam</a></Link></li>
+                        <li><Link to={`country/${2}`}><a className="dropdown-item" >Kamboja</a></Link></li>
+                        <li><Link to={`country/${3}`}><a className="dropdown-item" >Indonesia</a></Link></li>
+                        <li><Link to={`country/${4}`}><a className="dropdown-item" >Laos</a></Link></li>
+                        <li><Link to={`country/${5}`}><a className="dropdown-item" >Malaysia</a></Link></li>
+                        <li><Link to={`country/${6}`}><a className="dropdown-item" >Myanmar</a></Link></li>
+                        <li><Link to={`country/${7}`}><a className="dropdown-item" >Philippines</a></Link></li>
+                        <li><Link to={`country/${8}`}><a className="dropdown-item" >Singapore</a></Link></li>
+                        <li><Link to={`country/${9}`}><a className="dropdown-item" >Thailand</a></Link></li>
+                        <li><Link to={`country/${10}`}><a className="dropdown-item">Vietnam</a></Link></li>
                     </ul>
                     </li>
 

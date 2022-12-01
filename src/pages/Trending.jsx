@@ -23,7 +23,7 @@ return(
     <>
     <Navbar/>
     <div className="card mb-3 mx-auto" >
-        <div className="mx-auto row g-0" style={{width: "1200px"}}>
+        <div className="mx-auto row g-0">
             {news.map((trending) => {
                 return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={trending.id}>
                     <TrendingCard
