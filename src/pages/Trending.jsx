@@ -10,7 +10,7 @@ function Trending() {
 
     useEffect(() => {
 
-        axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
+        axios("https://ayfnfebe29.up.railway.app/news/all/trend").then((res) => {
         console.log(res)  
         setNews(res.data);
           setArticle(false);
@@ -27,10 +27,12 @@ return(
             {news.map((trending) => {
                 return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={trending.id}>
                     <TrendingCard
-                        // id={trending.id}
+                        id={trending.id}
                         image={trending.image}
                         title={trending.title}
                         content={trending.content}
+                        categoryName={trending.Category.name}
+                        createdAt={trending.createdAt}
                     />
                 </div>
             })}

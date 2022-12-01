@@ -12,12 +12,14 @@ function Asean(){
     const params = useParams();
     const {id} = params
     console.log(id)
+    const [isLoading, setIsLoading] = useState(true);
     const [news, setNews] = useState([]);
   
         
     useEffect(() => {
         axios.get(URL+id).then((response) => {
           setNews(response.data);
+          setIsLoading(false);
         });
       }, []);
 
@@ -27,22 +29,22 @@ function Asean(){
         <>
             <Navbar/>
             <div className="card mb-3 mx-auto" >
-                <div className="mx-auto row g-0">
-                {news.map((article, id) =>{
-                    return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={id} >
+            <div className="mx-auto row g-0">
+            {news.map((asean) => {
+                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={asean.id}>
                     <AseanCard
-                        id={article.id}
-                        image={article.image}
-                        title={article.title}
-                        content={article.content}
+                        id={asean.id}
+                        image={asean.image}
+                        title={asean.title}
+                        content={asean.content}
+                        categoryName={asean.Category.name}
+                        createdAt={asean.createdAt}
                     />
                 </div>
-                }
-                )}
-                
-                </div>
-                </div>   
-            <Footer/>
+            })}
+            </div>
+            </div>
+          <Footer/>
         </>
     )
 }

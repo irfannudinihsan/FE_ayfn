@@ -36,11 +36,11 @@ const Navbar = ({id}) => {
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
-            <a className="navbar-brand ps-5">
+            <span className="navbar-brand ps-5">
                 <Link to={"/"}>
                     <img src={logo} alt="" width="70" height="40"/>
                 </Link>
-            </a>
+            </span>
             
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -53,9 +53,9 @@ const Navbar = ({id}) => {
                     </li>
         
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color: 'white', marginRight:"2rem"}}>Category
+                        <span className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color: 'white', marginRight:"2rem"}}>Category
                         {/* <Link to={"/category"} style={{color: 'white'}} >Category</Link> */}
-                        </a>
+                        </span>
                 
                     <ul className="dropdown-menu">
                         <li><Link to={`category/${1}` }><a className="dropdown-item">Economy</a></Link></li>
@@ -67,14 +67,14 @@ const Navbar = ({id}) => {
                     </li>
                     
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color: 'white', marginRight:"2rem"}}>Asean
+                        <span className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color: 'white', marginRight:"2rem"}}>Asean
                         {/* <Link to={"/asean"} style={{color: 'white'}} >Asean</Link> */}
-                        </a>
+                        </span>
                     
                     <ul className="dropdown-menu">
 
                         {countries.map((item, index) => {
-                            return <li><Link to={`country/${item.id}`}><a className="dropdown-item" >{item.name}</a></Link></li>
+                            return <li><Link to={`country/${item.id}`}><span className="dropdown-item" >{item.name}</span></Link></li>
                         })}
                     </ul>
                     </li>
@@ -99,23 +99,27 @@ const Navbar = ({id}) => {
                     localStorage.getItem('token') 
                     ?
                         <>
+                        {/* <button className="btn nav-link text-white" > */}
+                            <Link to={"/formdata"} style={{color: 'white'}} className="nav-link active" >Create Data</Link>
+                        {/* </button> */}
+
                         <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
-                            Logout <MdLogout size={27} style={{color: 'white', marginRight:"1rem"}}/>
+                            Logout <MdLogout size={27} style={{color: 'white'}}/>
                         </button>
                         
                         <div className="modal fade" id="logout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="logoutLabel">Konfirmasi Logout</h5>
+                                    <h5 className="modal-title" id="logoutLabel">Confirm Logout</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    Apakah kamu yakin untuk logout?
+                                    Are you sure you want to exit?
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                    <button type="button" className="btn btn-primary" onClick={Logout}>Konfirmasi</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelled</button>
+                                    <button type="button" className="btn btn-primary" onClick={Logout}>Confirmation</button>
                                 </div>
                                 </div>
                             </div>
