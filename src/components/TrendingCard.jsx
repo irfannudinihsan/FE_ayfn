@@ -1,23 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const TrendingCard = ({image, title, content,}) => {
-    return(
-        <>
-        <div className="card mb-3">
-        <div className="row g-0 mx-auto" style={{width: "1200px"}}>
+
+const TrendingCard = ({image, title, content, id}) => {
+  const navigate = useNavigate();  
+  return(
+      <>
+        <div className="row g-0 mx-auto">
           <div className="col-md-4">
             <img src={image} className="img-fluid rounded-start" alt=""/>
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title " style={{color: 'blue'}}>{title}</h5>
               <p className="card-text">{content}</p>
-              {/* <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
             </div>
+            <button type="button" className="btn btn-primary  btn-sm" onClick={()=> navigate(`${id}`)}>News Detail
+              {/* <Link to={`detail/w${id}`} style={{color: 'white'}}></Link> */}
+            </button>
           </div>
         </div>
-      </div>
-        </>
+    </>
     )
 }
 

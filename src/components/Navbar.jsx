@@ -72,6 +72,7 @@ const Navbar = ({id}) => {
                         </a>
                     
                     <ul className="dropdown-menu">
+
                         {countries.map((item, index) => {
                             return <li><Link to={`country/${item.id}`}><a className="dropdown-item" >{item.name}</a></Link></li>
                         })}

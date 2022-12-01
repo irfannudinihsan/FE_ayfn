@@ -9,8 +9,8 @@ return (
                 <div className="card-body" >
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{content}</p>
-                    <div className="btn btn-primary">
-                    <Link to={`newsdetail/${id}` } style={{color: 'white'}} >Liat Berita</Link>
+                    <div className="btn btn-primary">News Detail
+                    <Link to={`trending/${id}`} style={{color: 'white'}} ></Link>
                     {/* <a href="NewsDetail" className="btn btn-dark">Liat Berita</a> */}
                     </div>
                 </div>
