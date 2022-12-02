@@ -1,6 +1,6 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { MdLogin, MdLogout } from "react-icons/md";
+import { MdLogin, MdLogout, MdShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -99,14 +99,15 @@ const Navbar = ({id}) => {
                     localStorage.getItem('token') 
                     ?
                         <>
-                        {/* <button className="btn nav-link text-white" > */}
-                            <Link to={"/data"} style={{color: 'white'}} className="nav-link active" >Create Data</Link>
-                        {/* </button> */}
+                        <ul className="nav justify-content-end">
+                        <li className="nav-item nav-link active" >
+                            <Link to={"/data"} style={{color: 'white'}} className="nav-link active" ><MdShoppingCart size={27}/>Data</Link>
+                        </li>
 
                         <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
                             Logout <MdLogout size={27} style={{color: 'white'}}/>
                         </button>
-                        
+                        </ul>
                         <div className="modal fade" id="logout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
