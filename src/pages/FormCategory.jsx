@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit,faTrash,faCartPlus,} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NavbarAdmin from "../components/NavbarAdmin";
 
 const FormCategory = () => {
   const [users, setUser] = useState([]);
@@ -29,11 +30,12 @@ const FormCategory = () => {
 
   return (
     <>
-    <Navbar/>
-    <h2 style={{textAlign: 'center'}}>Dasboard Category</h2>
-      <Link to={`/addCategory`} ><FontAwesomeIcon icon={faCartPlus}/>
+    <NavbarAdmin/>
+    <h2 className="flex items-center justify-between my-4" style={{textAlign: 'center'}}>Dasboard Category</h2>
+    <button className="primary mb-3 mx-3"><Link to={`/addCategory`} ><FontAwesomeIcon icon={faCartPlus}/>
           Add New
         </Link>
+        </button>
         <table className="table table-secondary table-striped" style={{textAlign: 'center'}}>
           <thead>
             <tr>

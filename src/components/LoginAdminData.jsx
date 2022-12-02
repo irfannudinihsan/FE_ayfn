@@ -21,7 +21,7 @@ function Login ()  {
         console.log(res);
         console.log(res.data);
         localStorage.setItem('token', res.data.token);
-        location.href='/';
+        location.href='/homeadmin';
       }).catch(err => {
         console.log(err.response.status)
         if(err.response.status === 401){
@@ -37,14 +37,6 @@ function Login ()  {
         setErrMsg('');
     }, [email, password])
 
-    // const user = {
-    //     email: email, setEmail,
-    //     password: password, setPassword
-    // }
-    //   .catch(error=>{
-    //     alert('service error')
-    //     console.log(error)
-    //   })
         return (
             <div className="container mt-5">
                 <div className="row justify-content-center">
@@ -71,8 +63,6 @@ function Login ()  {
                         </div>
                         <button className="btn btn-primary bg-gradient btn-block" type="submit">Login</button>    
                     </form>
-                    <p className='my-2'>Don't have an account? <Link to={"/register"}>Register here</Link></p>
-                    <p className='my-2'><Link to={"/loginadmin"}>Login sebagai Admin</Link></p> 
                     </div>
                 </div>
             </div> 

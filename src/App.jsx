@@ -22,6 +22,8 @@ import EditCountry from "./pages/EditCountry";
 import TrendingDetail from "./pages/TrendingDetail";
 import CategoryDetail from "./pages/CategoryDetail";
 import AseanDetail from "./pages/AseanDetail";
+import LoginAdmin from "./pages/LoginAdmin";
+import HomeAdmin from "./pages/HomeAdmin";
 
 function App() {
 
@@ -30,6 +32,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/homeadmin" element={<HomeAdmin />} />
         <Route path="/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/trending/:id" element={<TrendingDetail/>} />
@@ -39,6 +42,7 @@ function App() {
         <Route path="/country/:id/:id" element={<AseanDetail />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/loginadmin" element={<LoginAdmin />} />
         <Route path="/register" element={<Register />} />
         <Route path="/data" element={<FormData />} />
         <Route path="/add" element={<AddData/>}/>
