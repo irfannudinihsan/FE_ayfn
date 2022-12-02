@@ -9,30 +9,60 @@ const EditData = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [summary, setSummary] = useState("");
-    const [categoryId, setCategoryId] = useState("");
+    const [categoryName, setCategoryName] = useState("");
     const [categories, setCategories] = useState([]);
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState();
     const navigate = useNavigate();
     const { id } = useParams();
 
   useEffect(() => {
     getUserById();
+    getCategory();
+    
   }, []);
 
+  const getCategory = async () => {
+    const response = await instance.get(`/category`);
+    
+    console.log(response);
+    setCategories(response.data);
+      // setErrMsg('');
+  }
+
   const updateData = async (e) => {
+    console.log(image);
     e.preventDefault();
+    // try {
+    //   await instance.put(`/news/${id}`, {
+    //     title,
+    //     content,
+    //     summary,
+    //     categoryName,
+    //     image,
+    //     // categories,
+
+    //   });
+    //   navigate("/");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    const formData = new FormData()
+
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('summary', summary);
+    formData.append('image', image);
+    formData.append('categoryId', categoryName);
+    // console.log(data.get('image'))
     try {
-      await instance.patch(`/news/${id}`, {
-        title,
-        content,
-        summary,
-        categoryId,
-        image,
-        // categories,
+      await instance.put(`/news/${id}`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
       });
-      navigate("/");
+      // navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 
@@ -42,17 +72,11 @@ const EditData = () => {
     setTitle(response.data.title);
     setContent(response.data.content);
     setSummary(response.data.summary);
-    setCategoryId(response.data.categoryId);
+    setCategoryName(response.data.Category.name);
     setImage(response.data.image);
     // setCategories(response.data.categories);
 
-    useEffect(() => {
-      instance.get(`/category`)
-      .then(res => {
-          setCategories(res.data)
-      });
-      // setErrMsg('');
-    }, []);
+    
     
   };
 
@@ -109,8 +133,8 @@ const EditData = () => {
           </div>
           <div className='form-group mb-3'>
             <label htmlFor="categories">Category</label>
-              <select name="categoriesId" id="categories" className='form-select' onChange={(e) => setCategoryId(e.target.value)} required>
-                <option value="" selected>Select Category</option>
+              <select name="categoriesId" id="categories" className='form-select' onChange={(e) => setCategoryName(e.target.value)} required>
+                <option value={categoryName} selected>{categoryName}</option>
                 {
                 categories.map((item, id) => {
                 return <option value={item.id}>{item.name}</option>
