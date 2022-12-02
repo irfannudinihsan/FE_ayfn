@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
+import axios from "../libs/axios";
 
 const AddData = () => {
   const [title, setTitle] = useState("");
@@ -14,28 +15,28 @@ const AddData = () => {
   const [categories, setCategories] = useState([]);
   const [countryId, setCountryId] = useState("");
   const [countries, setCountries] = useState([]);
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
   const saveData = async (e) => {
     e.preventDefault();
-    // data.append('countryId', countryId);
-    // data.append('categoryId', categoryId);
-    // data.append('image', image);
+    const formData = new FormData()
+
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('summary', summary);
+    formData.append('image', image);
+    formData.append('categoryId', categoryId);
     // console.log(data.get('image'))
     try {
-      axios.post(`/news`, {
-        title,
-        content,
-        summary,
-        image,
-        categoryId,
-        
-        
+      await axios.post(`/news`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
       });
       // navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 

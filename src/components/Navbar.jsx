@@ -32,7 +32,7 @@ function Navbar  () {
             setNews(res.data)
         })
     }, []);
-    console.log({news, keyword})
+    // console.log({news, keyword})
 
     const searchByTitle = (e) => {
         e.preventDefault();
