@@ -12,38 +12,40 @@ const AddData = () => {
   const [summary, setSummary] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
-  const [countryId, setCountryId] = useState('');
+  const [countryId, setCountryId] = useState("");
   const [countries, setCountries] = useState([]);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
   const navigate = useNavigate();
 
   const saveData = async (e) => {
     e.preventDefault();
-    data.append('countryId', countryId);
-    data.append('categoryId', categoryId);
-    data.append('image', image);
-    console.log(data.get('image'))
+    // data.append('countryId', countryId);
+    // data.append('categoryId', categoryId);
+    // data.append('image', image);
+    // console.log(data.get('image'))
     try {
-      await axios.post("/news", {
+      axios.post(`/news`, {
         title,
         content,
         summary,
+        image,
         categoryId,
         
+        
       });
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    axios.get(`https://ayfnfebe29.up.railway.app/country`)
-    .then(res => {
-        setCountries(res.data)
-    });
-    // setErrMsg('');
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`https://ayfnfebe29.up.railway.app/country`)
+  //   .then(res => {
+  //       setCountries(res.data)
+  //   });
+  //   // setErrMsg('');
+  // }, []);
 
   useEffect(() => {
     axios.get(`https://ayfnfebe29.up.railway.app/category`)
@@ -163,7 +165,7 @@ const AddData = () => {
               />
             </div>
           </div> */}
-          <div className='form-group mb-3'>
+          {/* <div className='form-group mb-3'>
             <label htmlFor="countries">Country</label>
               <select name="countryId" id="countries" className='form-select' onChange={(e) => setCountryId(e.target.value)} required>
                 <option value="" selected>Select Country</option>
@@ -173,14 +175,10 @@ const AddData = () => {
                 })
                 }
               </select>
-            </div>
+            </div> */}
           <div className="mb-2 mt-4">
             <button type="submit" className="btn btn-success">Create</button>
           </div>
-
-          {/* <div className="mb-2">
-            <Link to={"/data"} type="submit" className="btn btn-secondary">Back</Link>
-          </div> */}
         </form>
       </div>
     </div>
