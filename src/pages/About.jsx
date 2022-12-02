@@ -1,6 +1,6 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import logoAYF from "../assets/logoAYF.png";
+import logoAYF from "../assets/LogoAYF.png";
 import logoSmall from "../assets/logo_small.png";
 
 const About = () => {
