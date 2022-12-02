@@ -37,7 +37,7 @@ function Navbar  () {
     const searchByTitle = (e) => {
         e.preventDefault();
         setKeyword(title);
-        setNews(res.data)
+        // setNews(res.data)
     }
 
     const [countries, setCountries] = useState([]);
