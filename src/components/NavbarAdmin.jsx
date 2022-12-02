@@ -1,7 +1,8 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { MdLogin, MdLogout } from "react-icons/md";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Logout = () => {
     localStorage.clear();
@@ -9,6 +10,22 @@ const Logout = () => {
 }
 
 const NavbarAdmin = ({}) => {
+    const [news, setNews] = useState([]);
+    const [keyword, setKeyword] = useState("");
+    const [title, setTitle] = useState("");
+
+    useEffect(() => {
+        axios.get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`).then((res)=>{
+            setNews(res.data)
+        })
+    }, []);
+    // console.log({news, keyword})
+
+    const searchByTitle = (e) => {
+        e.preventDefault();
+        setKeyword(title);
+        // setNews(res.data)
+    }
 
     return (
     <>
@@ -34,12 +51,16 @@ const NavbarAdmin = ({}) => {
                     <li className="nav-item">
                             <Link to={"/country"} style={{color: 'white', marginRight:"2rem"}} className="nav-link active">Asean</Link>
                     </li>
+
+                    <li className="nav-item">
+                            <Link to={"/formadmin"} style={{color: 'white', marginRight:"2rem"}} className="nav-link active">Dashboard</Link>
+                    </li>
             </ul>
 
             <ul className="navbar-nav pe-5 justify-content-end">
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search" onSubmit={searchByTitle}>
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+                    <button className="btn btn-outline-primary" type="submit" onClick={searchByTitle}  style={{color: 'white'}}>Search</button>
                 </form>
                 <li className="nav-item">
                     {
