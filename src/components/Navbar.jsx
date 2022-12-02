@@ -22,7 +22,23 @@ const Logout = () => {
     location.href='/';
 }
 
-const Navbar = ({id}) => {
+function Navbar  () {
+    const [news, setNews] = useState([]);
+    const [keyword, setKeyword] = useState("");
+    const [title, setTitle] = useState("");
+
+    useEffect(() => {
+        axios.get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`).then((res)=>{
+            setNews(res.data)
+        })
+    }, []);
+    console.log({news, keyword})
+
+    const searchByTitle = (e) => {
+        e.preventDefault();
+        setKeyword(title);
+        setNews(res.data)
+    }
 
     const [countries, setCountries] = useState([]);
     useEffect(() => {
@@ -83,9 +99,9 @@ const Navbar = ({id}) => {
                         <Link to={"/about"} style={{color: 'white'}} className="nav-link active" aria-current="page">About Us</Link>
                     </li>
             </ul>
-            <form className="d-flex" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+            <form className="d-flex" role="search" onSubmit={searchByTitle}>
+                <input className="form-control me-2 input" type="search" placeholder="SearchByTitle" aria-label="Search" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <button className="btn btn-outline-primary text-white" type="submit" onClick={searchByTitle}>Search</button>
             </form>
             
 
