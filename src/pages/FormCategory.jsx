@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../libs/axios";
 import { Link } from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit,faTrash,faCartPlus,} from "@fortawesome/free-solid-svg-icons";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NavbarAdmin from "../components/NavbarAdmin";
 
@@ -15,17 +14,40 @@ const FormCategory = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://ayfnfebe29.up.railway.app/category");
+    const response = await axios.get("/category");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://ayfnfebe29.up.railway.app/category/${id}`);
+      await axios.delete(`/category/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
     }
+
+  var config = {
+    method: 'post',
+    url: `/category`,
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+
+    },
+  };
+
+  axios(config)
+  .then(function (response) {
+    log('ini respon create: ', response);
+    swal({
+      title: "Program berhasil dibuat!",
+      icon: "success",
+      button: "OK!",
+    });
+    Navigate('/organization')
+  })
+  // .catch(function (eror) {
+  //   log('ini eror create: ', error);
+  // });
   };
 
   return (
