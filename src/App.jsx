@@ -24,6 +24,7 @@ import CategoryDetail from "./pages/CategoryDetail";
 import AseanDetail from "./pages/AseanDetail";
 import LoginAdmin from "./pages/LoginAdmin";
 import HomeAdmin from "./pages/HomeAdmin";
+import FormAdmin from "./pages/FormAdmin";
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/country" element={<FormCountry />} />
         <Route path="/addCountry" element={<AddCountry/>}/>
         <Route path="/editCountry/:id" element={<EditCountry/>}/>
+        <Route path="/formadmin" element={<FormAdmin/>}/>
       </Routes>
     </>
   )
