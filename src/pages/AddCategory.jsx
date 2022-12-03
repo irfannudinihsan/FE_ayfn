@@ -15,17 +15,23 @@ const AddCategory = () => {
 
   const saveData = async (e) => {
     e.preventDefault();
+    const formData = new FormData()
+
+    formData.append('name', name);
+    // formData.append('content', content);
+    // formData.append('summary', summary);
+    // formData.append('image', image);
+    // formData.append('categoryId', categoryId);
+    // console.log(data.get('image'))
     try {
-      await axios.post("https://ayfnfebe29.up.railway.app/category", {
-        name,
-        // content,
-        // summary,
-        // categoryId,
-        
+      await axios.post(`/category`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
       });
-      navigate("/");
+      // navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 

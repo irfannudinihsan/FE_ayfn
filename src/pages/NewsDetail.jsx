@@ -4,7 +4,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import { AiOutlineLoading3Quarters } from "react-icons/Ai";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import BackComponent from "../components/BackComponent";
 
 const URL = "https://ayfnfebe29.up.railway.app/news/detail/"
