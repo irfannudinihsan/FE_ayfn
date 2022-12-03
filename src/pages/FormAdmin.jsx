@@ -57,10 +57,6 @@ const FormAdmin = () => {
     <>
     <NavbarAdmin/>
     <h2 className="flex items-center justify-between my-4"style={{textAlign: 'center'}}>Dasboard Admin</h2>
-      {/* <button className="primary mb-3 mx-3" style={{color: 'white'}}><Link to={`/add`} ><FontAwesomeIcon icon={faCartPlus}/>
-          Add New
-        </Link>
-      </button> */}
         <table className="table table-secondary table-striped" style={{textAlign: 'center'}}>
           <thead>
             <tr>
