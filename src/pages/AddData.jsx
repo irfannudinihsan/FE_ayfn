@@ -38,6 +38,17 @@ const AddData = () => {
     } catch (error) {
       console.log(error.response);
     }
+
+    try {
+      await axios.post(`https://ayfnfebe29.up.railway.app/news/needProceed`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
+      });
+      navigate("/formadmin");
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   // useEffect(() => {
