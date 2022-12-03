@@ -19,34 +19,34 @@ const FormAdmin = () => {
     setUser(response.data);
   };
   
-  // const publishUser = async (id) => {
-  //   try{
-  //     await axios.get(`https://ayfnfebe29.up.railway.app/news/proceeded`);
-  //     getUsers();
-  //   } catch (error){
-  //     console.log(error);
-  //   }
-    // Navigate('/news')
-    // var config = {
-    //   method: 'put',
-    //   url: `/news`,
-    //   headers: {
-    //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
+//   const publishUser = async (id) => {
+//     try{
+//       await axios.get(`/news/${id}`);
+//       getUsers();
+//     } catch (error){
+//       console.log(error);
+//     }
+// // Navigate('/news')
+//     var config = {
+//       method: 'post',
+//       url: `/news`,
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`,
   
-    //   },
-    // };
+//       },
+//     };
   
-    // axios(config)
-    // .then(function (response) {
-    //   log('ini respon create: ', response);
-    //   swal({
-    //     title: "Program berhasil dibuat!",
-    //     icon: "success",
-    //     button: "OK!",
-    //   });
-    //   Navigate('/news')
-    // })
-  // }
+//     axios(config)
+//     .then(function (response) {
+//       log('ini respon create: ', response);
+//       swal({
+//         title: "Program berhasil dibuat!",
+//         icon: "success",
+//         button: "OK!",
+//       });
+//       Navigate('/organization')
+//     })
+//   }
 
   const deleteUser = async (id) => {
     try {
@@ -109,8 +109,9 @@ const FormAdmin = () => {
                 <button onClick={() => unpublishUser(user.id)}>
                       <MdUnpublished/>UnPublish
                    </button>
-                 <button onClick={() => publishUser(user.id)}>
-                       <MdPublish/>Publish
+                 <button >
+                      <Link to={`/publishnews/${user.id}`} > <MdPublish/>Publish
+                      </Link>
                   </button>
                   {/* <Link
                     to={`/edit/${user.id}`}>
