@@ -40,7 +40,7 @@ const AddData = () => {
     }
 
     try {
-      await axios.post(`https://ayfnfebe29.up.railway.app/news/needProceed`, formData,{
+      await axios.post(`https://ayfnfebe29.up.railway.app/news/proceed`, formData,{
         headers: {
           'Content-Type': 'multipart/form-data'
       }
