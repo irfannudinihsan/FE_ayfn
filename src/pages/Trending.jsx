@@ -24,17 +24,15 @@ return(
     <Navbar/>
     <div className="card mb-3 mx-auto" >
         <div className="mx-auto row g-0">
-            {news.map((trending) => {
-                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={trending.id}>
+            {news.map((news, id) => {
+                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={news.id}>
                     <TrendingCard
-                        id={trending.id}
-                        image={trending.image}
-                        title={trending.title}
-
-                        summary={trending.summary}
-
-                        categoryName={trending.Category.name}
-                        createdAt={trending.createdAt}
+                        id={news.id}
+                        image={news.image}
+                        title={news.title}
+                        summary={news.summary}
+                        CategoryName={news.Category.name}
+                        createdAt={news.createdAt}
                     />
                 </div>
             })}

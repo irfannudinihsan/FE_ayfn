@@ -3,7 +3,7 @@ import { format, parseISO } from "date-fns";
 
 
 
-const AseanCard = ({image, title, summary, id, createdAt, categoryName}) => {
+const AseanCard = ({image, title, summary, id, createdAt, CategoryName}) => {
 
   return(
       <>
@@ -17,7 +17,7 @@ const AseanCard = ({image, title, summary, id, createdAt, categoryName}) => {
 
               <p className="card-text">{summary}</p>
 
-              <h6 className="card-text primary" style={{color: 'blue'}}>{categoryName}</h6> 
+              <h6 className="card-text primary" style={{color: 'blue'}}>{CategoryName}</h6> 
               <p>{format(parseISO(createdAt), "MM-dd-yyyy")}</p>
             </div>
             <button type="button" className="btn btn-primary btn-sm mx-3" >
