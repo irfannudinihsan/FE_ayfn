@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import instance from "../libs/axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import NavbarAdmin from "../components/NavbarAdmin";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import { MdArrowBack } from "react-icons/md";
 
 const EditCountry = () => {
     const [name, setName] = useState("");
@@ -18,21 +21,40 @@ const EditCountry = () => {
 
   const updateData = async (e) => {
     e.preventDefault();
+    // try {
+    //   await axios.patch(`https://ayfnfebe29.up.railway.app/country/${id}`, {
+    //     name,
+    //     // content,
+    //     // summary,
+    //     // categoryId,
+    //   });
+    //   navigate("/");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    const formData = new FormData()
+
+    formData.append('name', name);
+    // formData.append('content', content);
+    // formData.append('summary', summary);
+    // formData.append('image', image);
+    // formData.append('categoryId', categoryName);
+    // console.log(data.get('image'))
     try {
-      await axios.patch(`https://ayfnfebe29.up.railway.app/country/${id}`, {
-        name,
-        // content,
-        // summary,
-        // categoryId,
+      await instance.put(`/country/${id}`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
       });
-      navigate("/");
+      // navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://ayfnfebe29.up.railway.app/country/${id}`);
+    const response = await instance.get(`/country/${id}`);
+    console.log(response);
     setName(response.data.name);
     // setContent(response.data.content);
     // setName(response.data.name);
@@ -40,12 +62,17 @@ const EditCountry = () => {
 
   return (
     <>
-    <Navbar/>
+    <NavbarAdmin/>
     <div className="container">
-      <div className="row">
-      <div className="flex items-center justify-between my-4">
-        <h2>Edit Data</h2>
+      <div className="row justify-content-center">
+      <div className="flex items-center justify-between my-4 text-center">
+        <h2>Update Data Category</h2>
       </div>
+      <div className="container mt-3 mb-2">
+        <Link to={"/country"}>
+            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
+        </Link>
+        </div>
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
         <form onSubmit={updateData}>
@@ -61,49 +88,9 @@ const EditCountry = () => {
               />
             </div>
           </div>
-          {/* <div className="field">
-            <label className="label">Content</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
+          <div className="mb-2 mt-4">
+            <button type="submit" className="btn btn-success">Update</button>
           </div>
-          <div className="field">
-            <label className="label">Summary</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={summary}
-                onChange={(e) => setSummary(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">CategoryId</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={categoryId}
-                onChange={(e) => setCategoryId(e.target.value)}
-                // placeholder="Name"
-              />
-            </div>
-          </div> */}
-          <div className="mb-2">
-            <button type="submit" className="btn btn-primary">Create</button>
-          </div>
-
-          {/* <div className="mb-2">
-            <Link to={"/"} type="submit" className="btn btn-secondary">Back</Link>
-          </div> */}
         </form>
       </div>
     </div>
