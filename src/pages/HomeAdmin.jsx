@@ -1,17 +1,23 @@
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import News from './News'
-import orang from "../assets/orang.png"
 
-const Home = () => {
+import NewsAdmin from './NewsAdmin'
+
+
+const HomeAdmin = (props) => {
+  const [news, setNews] = useState([]);
+
+  const updateNews = (n) => {
+    setNews(n);
+  }
     return (
       <div>
-          <Navbar />
-            <div className='container-fluid d-flex justify-content-center'>
-              <img src={orang}  className=""/>
-            </div>
-          
-          <News/>
+        {console.log(news)}
+          <NavbarAdmin  setNews={setNews}/>
+          <NewsAdmin news={news}/>
+
           <Footer/>
       </div>
     )

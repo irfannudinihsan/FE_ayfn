@@ -26,35 +26,24 @@ const FormAdmin = () => {
     );
     setPublished(response.data);
   };
-  
-//   const publishUser = async (id) => {
-//     try{
-//       await axios.get(`/news/${id}`);
-//       getUsers();
-//     } catch (error){
-//       console.log(error);
-//     }
-// // Navigate('/news')
-//     var config = {
-//       method: 'post',
-//       url: `/news`,
-//       headers: {
-//         'Authorization': `Bearer ${localStorage.getItem('token')}`,
-  
-//       },
-//     };
-  
-//     axios(config)
-//     .then(function (response) {
-//       log('ini respon create: ', response);
-//       swal({
-//         title: "Program berhasil dibuat!",
-//         icon: "success",
-//         button: "OK!",
-//       });
-//       Navigate('/organization')
-//     })
-//   }
+
+  const getUnPublished = async () => {
+    const response = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/needProceed"
+    );
+    setUnPublished(response.data);
+  };
+
+  const getAllNews = async () => {
+    const response1 = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/all"
+    );
+    const response2 = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/needProceed"
+    );
+    let tempArr = response1.data.concat(response2.data);
+    setAllNews(tempArr.sort((x,y) => x.id - y.id));
+  }
 
   const getUnPublished = async () => {
     const response = await axios.get(
