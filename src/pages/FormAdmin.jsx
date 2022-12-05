@@ -26,6 +26,35 @@ const FormAdmin = () => {
     );
     setPublished(response.data);
   };
+  
+//   const publishUser = async (id) => {
+//     try{
+//       await axios.get(`/news/${id}`);
+//       getUsers();
+//     } catch (error){
+//       console.log(error);
+//     }
+// // Navigate('/news')
+//     var config = {
+//       method: 'post',
+//       url: `/news`,
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  
+//       },
+//     };
+  
+//     axios(config)
+//     .then(function (response) {
+//       log('ini respon create: ', response);
+//       swal({
+//         title: "Program berhasil dibuat!",
+//         icon: "success",
+//         button: "OK!",
+//       });
+//       Navigate('/organization')
+//     })
+//   }
 
   const getUnPublished = async () => {
     const response = await axios.get(
@@ -95,55 +124,76 @@ const FormAdmin = () => {
   };
 
 
+  if(isLoading){
+    return <div className="">Loading...</div>;
+  }
+  else{
+    return (
+      <>
+      {console.log(allNews)}
+        <NavbarAdmin />
+        <h2
+          className="flex items-center justify-between my-4"
+          style={{ textAlign: "center" }}
+        >
+          Dasboard Admin
+        </h2>
+        <div className="container-fluid p-5">
+          <div className="table-responsive">
+          <table
+            className="table table-bordered table-striped"
+            style={{ textAlign: "center" }}
+          >
+            <thead className="thead-dark">
+              <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Summary</th>
+                <th>CategoryId</th>
+                <th>Actions</th>
 
-  return (
-    <>
-    <NavbarAdmin/>
-    <h2 className="flex items-center justify-between my-4"style={{textAlign: 'center'}}>Dasboard Admin</h2>
-        <table className="table table-secondary table-striped" style={{textAlign: 'center'}}>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Title</th>
-              <th>Content</th>
-              <th>Summary</th>
-              <th>CategoryId</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user.id}>
-                <td>{index + 1}</td>
-                <td>{user.title}</td>
-                <td>{user.content}</td>
-                <td>{user.summary}</td>
-                <td>{user.categoryId}</td>
-                <td>
-                <button onClick={() => publishUser(user.id)}>
-                      <MdUnpublished/>UnPublish
-                   </button>
-                 <button onClick={() => publishUser(user.id)}>
-                       <MdPublish/>Publish
-                  </button>
-                  {/* <Link
-                    to={`/edit/${user.id}`}>
-                    
-                      <FontAwesomeIcon icon={faEdit}/>Edit
-                   
-                  </Link> */}
-                  <button
-                    onClick={() => deleteUser(user.id)}>
-                   <FontAwesomeIcon icon={faTrash}/>Delete
-                  </button>
-                </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-    <Footer/>
-    </>
-  );
+            </thead>
+            <tbody>
+              { allNews.map((news, index) => (
+                <tr key={news.id}>
+                  <td>{index + 1}</td>
+                  <td>{news.title}</td>
+                  <td>{news.content}</td>
+                  <td>{news.summary}</td>
+                  <td>{news.categoryId}</td>
+                  <td>
+                    <div className="d-flex">
+                      {news.isPublished ?
+                      <button className="btn btn-warning bg-gradient mx-1 text-nowrap" onClick={() => unpublishUser(news.id)}>
+                        <MdUnpublished />
+                        UnPublish
+                      </button>
+                      :
+                      <Link className="mx-1" to={`/publishnews/${news.id}`}>
+                        <button className="btn btn-primary bg-gradient text-nowrap">
+                          <MdPublish />
+                          Publish
+                        </button>
+                      </Link>
+                      }
+                      <button className="btn btn-danger bg-gradient mx-1 text-nowrap" onClick={() => deleteUser(news.id)}>
+                        <FontAwesomeIcon icon={faTrash} />
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 };
 
 export default FormAdmin;

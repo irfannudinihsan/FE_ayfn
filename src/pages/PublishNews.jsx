@@ -48,7 +48,13 @@ const PublishNews = () => {
           'Content-Type': 'multipart/form-data'
       }
       });
+<<<<<<< HEAD
       navigate("/");
+=======
+
+      navigate("/homeadmin");
+
+>>>>>>> bc68d372b598cd2a8f590108d9e402c9010705bd
     } catch (error) {
       console.log(error.response);
     }
