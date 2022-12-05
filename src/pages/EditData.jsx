@@ -4,6 +4,8 @@ import instance from "../libs/axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import { MdArrowBack } from "react-icons/md";
 
 const EditData = () => {
     const [title, setTitle] = useState("");
@@ -84,11 +86,17 @@ const EditData = () => {
     <>
     <Navbar/>
     <div className="container">
-      <div className="row">
-      <div className="flex items-center justify-between my-4">
+      <div className="row justify-content-center">
+      <div className="flex items-center justify-between my-4 text-center">
         <h2>Update Data</h2>
       </div>
-    <div className="columns mt-5 is-centered">
+      <div className="container mt-3 mb-2">
+        <Link to={"/data"}>
+            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
+        </Link>
+        </div>
+        <div className="card p-5 bg-primary" style={{opacity:"50"}}>
+    <div className="columns is-centered">
       <div className="column is-half">
         <form onSubmit={updateData}>
           <div className="field">
@@ -142,13 +150,12 @@ const EditData = () => {
                 }
               </select>
             </div>
-          <div className="field">
-            <button type="submit" className="button is-success">
-              Update
-            </button>
+          <div className="mb-2 mt-4">
+            <button type="submit" className="btn btn-success">Update</button>
           </div>
         </form>
       </div>
+    </div>
     </div>
     </div>
     </div>

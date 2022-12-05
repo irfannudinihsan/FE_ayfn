@@ -26,6 +26,35 @@ const FormAdmin = () => {
     );
     setPublished(response.data);
   };
+  
+//   const publishUser = async (id) => {
+//     try{
+//       await axios.get(`/news/${id}`);
+//       getUsers();
+//     } catch (error){
+//       console.log(error);
+//     }
+// // Navigate('/news')
+//     var config = {
+//       method: 'post',
+//       url: `/news`,
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  
+//       },
+//     };
+  
+//     axios(config)
+//     .then(function (response) {
+//       log('ini respon create: ', response);
+//       swal({
+//         title: "Program berhasil dibuat!",
+//         icon: "success",
+//         button: "OK!",
+//       });
+//       Navigate('/organization')
+//     })
+//   }
 
   const getUnPublished = async () => {
     const response = await axios.get(
@@ -76,6 +105,7 @@ const FormAdmin = () => {
     // });
   };
 
+
   if(isLoading){
     return <div className="">Loading...</div>;
   }
@@ -104,6 +134,7 @@ const FormAdmin = () => {
                 <th>Summary</th>
                 <th>CategoryId</th>
                 <th>Actions</th>
+
               </tr>
             </thead>
             <tbody>

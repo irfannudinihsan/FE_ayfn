@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../libs/axios";
+import instance from "../libs/axios";
 import { useNavigate } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import Footer from "../components/Footer";
@@ -61,61 +62,10 @@ const AddCategory = () => {
                 // placeholder="Email"
             />
           </div>
-          {/* <div className="field">
-            <label className="label">Name</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                // placeholder="Name"
-              />
-            </div>
-          </div> */}
-          {/* <div className="field">
-            <label className="label">Content</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Summary</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={summary}
-                onChange={(e) => setSummary(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">CategoryId</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={categoryId}
-                onChange={(e) => setCategoryId(e.target.value)}
-                // placeholder="Name"
-              />
-            </div>
-          </div> */}
+          
           <div className="mb-2 mt-3">
             <button type="submit" className="btn btn-success">Create</button>
           </div>
-
-          {/* <div className="mb-2">
-            <Link to={"/category"} type="submit" className="btn btn-secondary">Back</Link>
-          </div> */}
         </form>
       </div>
     </div>

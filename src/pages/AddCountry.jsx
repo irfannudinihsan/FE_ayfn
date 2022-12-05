@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../libs/axios";
 import { useNavigate } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import Footer from "../components/Footer";
@@ -16,17 +16,23 @@ const AddCountry = () => {
 
   const saveData = async (e) => {
     e.preventDefault();
+    const formData = new FormData()
+
+    formData.append('name', name);
+    // formData.append('content', content);
+    // formData.append('summary', summary);
+    // formData.append('image', image);
+    // formData.append('categoryId', categoryId);
+    // console.log(data.get('image'))
     try {
-      await axios.post("https://ayfnfebe29.up.railway.app/country", {
-        name,
-        // content,
-        // summary,
-        // categoryId,
-        
+      await axios.post(`/country`, formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+      }
       });
-      navigate("/");
+      // navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 
@@ -56,61 +62,10 @@ const AddCountry = () => {
                 // placeholder="Email"
             />
           </div>
-          {/* <div className="field">
-            <label className="label">Name</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                // placeholder="Name"
-              />
-            </div>
-          </div> */}
-          {/* <div className="field">
-            <label className="label">Content</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Summary</label>
-            <div className="control">
-              <textarea
-                type="text"
-                className="input"
-                value={summary}
-                onChange={(e) => setSummary(e.target.value)}
-                // placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">CategoryId</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={categoryId}
-                onChange={(e) => setCategoryId(e.target.value)}
-                // placeholder="Name"
-              />
-            </div>
-          </div> */}
+          
           <div className="mb-2 mt-3">
             <button type="submit" className="btn btn-success">Create</button>
           </div>
-
-          {/* <div className="mb-2">
-            <Link to={"/"} type="submit" className="btn btn-secondary">Back</Link>
-          </div> */}
         </form>
       </div>
     </div>
