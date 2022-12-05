@@ -1,15 +1,28 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { MdLogin, MdLogout } from "react-icons/md";
+import { MdLogin, MdLogout, MdShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+var countries = [
+    "Kamboja",
+    "Laos",
+    "Malaysia",
+    "Filipina",
+    "Thailand",
+    "Singapura",
+    "Vietnam",
+    "Myanmar",
+    "Indonesia",
+    "Brunei Darussalam",
+];
 
 const Logout = () => {
     localStorage.clear();
     location.href = '/';
 }
 
-const NavbarAdmin = ({setNews, ...rest}) => {
+const Navbar = ({ setNews }) => {
     const [keyword, setKeyword] = useState("");
     const [title, setTitle] = useState("");
 
@@ -26,13 +39,12 @@ const NavbarAdmin = ({setNews, ...rest}) => {
             setNews(res.data)
         })
     }
-
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-primary">
                 <div className="container-fluid">
                     <span className="navbar-brand ps-5">
-                        <Link to={"/homeadmin"}>
+                        <Link to={"/"}>
                             <img src={logo} alt="" width="70" height="40" />
                         </Link>
                     </span>
@@ -42,35 +54,67 @@ const NavbarAdmin = ({setNews, ...rest}) => {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
+                        <ul className="navbar-nav mx-auto ps-5">
                             <li className="nav-item">
-                                <Link to={"/category"} style={{ color: 'white', marginRight: "2rem" }} className="nav-link active">Category</Link>
+                                <Link to={"/trending"} style={{ color: 'white', marginRight: "2rem" }} className="nav-link active" aria-current="page">Trending</Link>
+                            </li>
+
+                            <li className="nav-item dropdown">
+                                <span className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: 'white', marginRight: "2rem" }}>Category
+                                    {/* <Link to={"/category"} style={{color: 'white'}} >Category</Link> */}
+                                </span>
+
+                                <ul className="dropdown-menu">
+                                    <li><Link to={`category/${1}`}><a className="dropdown-item">Economy</a></Link></li>
+                                    <li><Link to={`category/${2}`}><a className="dropdown-item">Environment</a></Link></li>
+                                    <li><Link to={`category/${3}`}><a className="dropdown-item">Health</a></Link></li>
+                                    <li><Link to={`category/${4}`}><a className="dropdown-item">Politic</a></Link></li>
+                                    <li><Link to={`category/${5}`}><a className="dropdown-item">Other</a></Link></li>
+                                </ul>
+                            </li>
+
+                            <li className="nav-item dropdown">
+                                <span className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: 'white', marginRight: "2rem" }}>Asean
+                                    {/* <Link to={"/asean"} style={{color: 'white'}} >Asean</Link> */}
+                                </span>
+
+                                <ul className="dropdown-menu">
+
+                                    {countries.map((item, index) => {
+                                        return <li><Link to={`country/${item.id}`}><span className="dropdown-item" >{item.name}</span></Link></li>
+                                    })}
+                                </ul>
                             </li>
 
                             <li className="nav-item">
-                                <Link to={"/country"} style={{ color: 'white', marginRight: "2rem" }} className="nav-link active">Asean</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link to={"/formadmin"} style={{ color: 'white', marginRight: "2rem" }} className="nav-link active">Dashboard</Link>
+                                <Link to={"/about"} style={{ color: 'white' }} className="nav-link active" aria-current="page">About Us</Link>
                             </li>
                         </ul>
+                        <form className="d-flex" role="search" onSubmit={searchByTitle}>
+                            <input className="form-control me-2 input" type="search" placeholder="SearchByTitle" aria-label="Search" value={title} onChange={(e) => setTitle(e.target.value)} />
+                            <button className="btn btn-outline-primary text-white" type="submit" onClick={searchByTitle}>Search</button>
+                        </form>
 
-                        <ul className="navbar-nav pe-5 justify-content-end">
-                            <form className="d-flex" role="search" onSubmit={searchByTitle}>
-                                <input className="form-control me-2" onChange={(e) => setTitle(e.target.value)} type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-secondary bg-gradient" type="submit" style={{ color: 'white' }}>Search</button>
-                            </form>
+
+                        <ul className="nav ps-5 pe-5 justify-content-end">
+                            {/* <li className="nav-item">
+                    <Link to={"/formdata"} style={{color: 'white', padding:"1rem"}} className="nav-link active" >Create Data</Link>
+                </li> */}
+
                             <li className="nav-item">
                                 {
                                     localStorage.getItem('token')
                                         ?
                                         <>
-                                            <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
-                                                Logout <MdLogout size={27} style={{ color: 'white' }} />
-                                            </button>
+                                            <ul className="nav justify-content-end">
+                                                <li className="nav-item nav-link active" >
+                                                    <Link to={"/data"} style={{ color: 'white' }} className="nav-link active" ><MdShoppingCart size={27} />Data</Link>
+                                                </li>
 
+                                                <button className="btn nav-link text-white" data-bs-toggle="modal" data-bs-target="#logout">
+                                                    Logout <MdLogout size={27} style={{ color: 'white' }} />
+                                                </button>
+                                            </ul>
                                             <div className="modal fade" id="logout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
                                                 <div className="modal-dialog">
                                                     <div className="modal-content">
@@ -106,4 +150,5 @@ const NavbarAdmin = ({setNews, ...rest}) => {
     )
 }
 
-export default NavbarAdmin
+
+export default Navbar

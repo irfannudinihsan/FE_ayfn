@@ -2,18 +2,9 @@ import  NewsCard  from '../components/NewsCard'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-function News({news}) {
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [news, setNews] = useState([]);
+function NewsAdmin({news}) {
+    const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
-    //       setNews(res.data);
-    //       setIsLoading(false);
-    //     });
-    //   }, []);
-
-    //   console.log(news);
 
 return(
     <>
@@ -36,4 +27,4 @@ return(
 )
 }
 
-export default News;
+export default NewsAdmin;
