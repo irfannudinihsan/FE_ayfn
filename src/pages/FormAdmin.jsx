@@ -45,6 +45,24 @@ const FormAdmin = () => {
     setAllNews(tempArr.sort((x,y) => x.id - y.id));
   }
 
+  const getUnPublished = async () => {
+    const response = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/needProceed"
+    );
+    setUnPublished(response.data);
+  };
+
+  const getAllNews = async () => {
+    const response1 = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/all"
+    );
+    const response2 = await axios.get(
+      "https://ayfnfebe29.up.railway.app/news/needProceed"
+    );
+    let tempArr = response1.data.concat(response2.data);
+    setAllNews(tempArr.sort((x,y) => x.id - y.id));
+  }
+
   const deleteUser = async (id) => {
     try {
       await axios.delete(`/news/${id}`);
@@ -76,6 +94,7 @@ const FormAdmin = () => {
     // });
   };
 
+
   if(isLoading){
     return <div className="">Loading...</div>;
   }
@@ -104,6 +123,7 @@ const FormAdmin = () => {
                 <th>Summary</th>
                 <th>CategoryId</th>
                 <th>Actions</th>
+
               </tr>
             </thead>
             <tbody>

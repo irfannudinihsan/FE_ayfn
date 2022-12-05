@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
-import NavbarAdmin from '../components/NavbarAdmin'
+import Navbar from '../components/Navbar'
 import News from './News'
+
 import NewsAdmin from './NewsAdmin'
 
 
@@ -16,9 +17,10 @@ const HomeAdmin = (props) => {
         {console.log(news)}
           <NavbarAdmin  setNews={setNews}/>
           <NewsAdmin news={news}/>
+
           <Footer/>
       </div>
     )
   }
   
-  export default HomeAdmin
+  export default Home
