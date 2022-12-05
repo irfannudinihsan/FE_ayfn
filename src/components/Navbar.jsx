@@ -32,7 +32,7 @@ function Navbar  () {
             setNews(res.data)
         })
     }, []);
-    // console.log({news, keyword})
+    console.log({news, keyword})
 
     const searchByTitle = (e) => {
         e.preventDefault();
@@ -100,7 +100,8 @@ function Navbar  () {
                     </li>
             </ul>
             <form className="d-flex" role="search" onSubmit={searchByTitle}>
-                <input className="form-control me-2 input" type="search" placeholder="SearchByTitle" aria-label="Search" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input className="form-control me-2 input" type="text" placeholder="SearchByTitle" aria-label="Search" value={title}
+                 onChange={(e)=> setTitle(e.target.value)}/>
                 <button className="btn btn-outline-primary text-white" type="submit" onClick={searchByTitle}>Search</button>
             </form>
             

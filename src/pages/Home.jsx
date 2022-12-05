@@ -7,8 +7,9 @@ const Home = () => {
     return (
       <div>
           <Navbar />
-          
-            <img src={orang}  className="img-fluid"/>
+            <div className='container-fluid d-flex justify-content-center'>
+              <img src={orang}  className=""/>
+            </div>
           
           <News/>
           <Footer/>

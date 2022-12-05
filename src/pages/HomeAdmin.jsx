@@ -1,16 +1,20 @@
 import Footer from '../components/Footer'
-import NavbarAdmin from '../components/NavbarAdmin'
+import Navbar from '../components/Navbar'
 import News from './News'
+import orang from "../assets/orang.png"
 
-
-const HomeAdmin = () => {
+const Home = () => {
     return (
       <div>
-          <NavbarAdmin />
+          <Navbar />
+            <div className='container-fluid d-flex justify-content-center'>
+              <img src={orang}  className=""/>
+            </div>
+          
           <News/>
           <Footer/>
       </div>
     )
   }
   
-  export default HomeAdmin
+  export default Home
