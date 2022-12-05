@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import NavbarAdmin from '../components/NavbarAdmin'
 import News from './News'
 
 import NewsAdmin from './NewsAdmin'
+
 
 
 const HomeAdmin = (props) => {
@@ -23,4 +24,4 @@ const HomeAdmin = (props) => {
     )
   }
   
-  export default Home
+  export default HomeAdmin

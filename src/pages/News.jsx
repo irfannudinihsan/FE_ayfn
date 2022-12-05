@@ -2,18 +2,18 @@ import  NewsCard  from '../components/NewsCard'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-function News() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [news, setNews] = useState([]);
+function News({news}) {
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [news, setNews] = useState([]);
 
-    useEffect(() => {
-        axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
-          setNews(res.data);
-          setIsLoading(false);
-        });
-      }, []);
+    // useEffect(() => {
+    //     axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
+    //       setNews(res.data);
+    //       setIsLoading(false);
+    //     });
+    //   }, []);
 
-      console.log(news);
+    //   console.log(news);
 
 return(
     <>
