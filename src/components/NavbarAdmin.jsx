@@ -60,7 +60,7 @@ const NavbarAdmin = ({setNews, ...rest}) => {
                         <ul className="navbar-nav pe-5 justify-content-end">
                             <form className="d-flex" role="search" onSubmit={searchByTitle}>
                                 <input className="form-control me-2" onChange={(e) => setTitle(e.target.value)} type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-secondary bg-gradient" type="submit" style={{ color: 'white' }}>Search</button>
+                                <button className="btn btn-secondary bg-primary" type="submit" style={{ color: 'white' }}>Search</button>
                             </form>
                             <li className="nav-item">
                                 {

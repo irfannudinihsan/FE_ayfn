@@ -22,7 +22,7 @@ const Logout = () => {
     location.href = '/';
 }
 
-const Navbar = ({ setNews }) => {
+const Navbar = ({ id, setNews }) => {
     const [keyword, setKeyword] = useState("");
     const [title, setTitle] = useState("");
 
@@ -79,10 +79,20 @@ const Navbar = ({ setNews }) => {
                                 </span>
 
                                 <ul className="dropdown-menu">
+                                    <li><Link to={`country/${1}`}><a className="dropdown-item">Brunei Darussalam</a></Link></li>
+                                    <li><Link to={`country/${2}`}><a className="dropdown-item">Cambodia</a></Link></li>
+                                    <li><Link to={`country/${3}`}><a className="dropdown-item">Indonesia</a></Link></li>
+                                    <li><Link to={`country/${4}`}><a className="dropdown-item">Laos</a></Link></li>
+                                    <li><Link to={`country/${5}`}><a className="dropdown-item">Malaysia</a></Link></li>
+                                    <li><Link to={`country/${6}`}><a className="dropdown-item">Myanmar</a></Link></li>
+                                    <li><Link to={`country/${7}`}><a className="dropdown-item">Philippines</a></Link></li>
+                                    <li><Link to={`country/${8}`}><a className="dropdown-item">Singapore</a></Link></li>
+                                    <li><Link to={`country/${9}`}><a className="dropdown-item">Thailand</a></Link></li>
+                                    <li><Link to={`country/${10}`}><a className="dropdown-item">Vietnam</a></Link></li>
 
-                                    {countries.map((item, index) => {
+                                    {/* {countries.map((item, index) => {
                                         return <li><Link to={`country/${item.id}`}><span className="dropdown-item" >{item.name}</span></Link></li>
-                                    })}
+                                    })} */}
                                 </ul>
                             </li>
 
