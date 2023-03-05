@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo_ayfn_nocolor.png";
 import { Link } from "react-router-dom";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useEffect, useState } from "react";

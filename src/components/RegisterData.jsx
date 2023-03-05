@@ -57,10 +57,11 @@ const RegisterData = () => {
     console.log(countries)
     return(
         <>
-        <div className="container mt-4">
+        <div className="container-fluid">
                 <div className="row justify-content-center">
-                        <div className="card col-md-7 p-5">
-                        <h2>Register</h2>
+                <h1 className='text-center fw-bolder my-5' style={{ color : "#0D6FFB" }}>Selamat Datang di ASEAN YOUTH FORUM NEWS</h1>
+                <div className="card  col-xl-6 col-md-8 col-sm-10 p-4 border-0 " style={{ background: "#ECF2FF" }}>
+                <h2 className='text-center fw-bolder' style={{ color : "#0D6FFB" }}>Register</h2>
                         {
                             success ? (
                                 <div className={"alert alert-success alert-dismissible fade show d-flex align-items-center"} aria-live="assertive" role="alert">
@@ -78,26 +79,26 @@ const RegisterData = () => {
                             </div>
                         </div>
                         <form onSubmit={onSubmitHandler} id="form">
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="name">Name</label>
-                                <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" className="form-control" placeholder="Name"  required/>
+                                <input value={fullName} onChange={(e) => setName(e.target.value)} type="name" className="form-control border-0 p-2" placeholder="Name"  required/>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="email">Email</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control border-0 p-2" placeholder="Email"  required/>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="exampleInputPassword1">Password</label>
-                                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Min.8 letters" required/>
+                                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control border-0 p-2" placeholder="Min.8 letters" required/>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="image">Image</label>
-                                <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" placeholder="Image Link" required/>
+                                <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control border-0 p-2" placeholder="Image Link" required/>
                             </div>
-                            <div className='form-group'>
+                            <div className='form-group my-3'>
                                 <label htmlFor="countries">Country</label>
-                                <select name="countryId" id="countries" className='form-select' onChange={(e) => setCountryId(e.target.value)} required>
-                                    <option value="" selected>Select Country</option>
+                                <select name="countryId" id="countries" className='form-select border-0 p-2' onChange={(e) => setCountryId(e.target.value)} required>
+                                    <option value="" selected>Country</option>
                                     {
                                         countries.map((item, id) => {
                                             return <option value={item.id}>{item.name}</option>
@@ -107,10 +108,9 @@ const RegisterData = () => {
                             </div>
                             <div className='mt-3'>
                                 <button type="submit" className="btn btn-primary bg-gradient btn-block me-1">Register</button>
-                                <button type="button" onClick={clearAllForm} className="btn btn-danger bg-gradient btn-block">Reset</button>                                     
                             </div>
                             <div className='mt-3'>
-                                Already have an account?&nbsp;<Link to={'/login'}>Login here</Link>
+                                Sudah punya akun?<Link to={'/login'}> Login</Link>
                             </div>
                         </form>
                     </div>                       

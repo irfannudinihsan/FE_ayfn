@@ -1,11 +1,17 @@
 import React from "react";
 import LoginData from "../components/LoginData";
+import NavbarLoginRegister from "../components/NavbarLoginRegister";
+
 
 const Login = () => {
     return (
-      <div>
+      
+      <div className="">
+        <NavbarLoginRegister/>
         <LoginData/>
       </div>
+
+      
     )
   }
   

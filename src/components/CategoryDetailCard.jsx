@@ -1,19 +1,29 @@
 import { format, parseISO } from "date-fns";
 
-const CategoryDetailCard = ({title, createdAt, image, content, userDetailFullname, countryName}) => {
-    return (
-        <>
-            <div className="container mt-3">
-                <div className="berita-body container mx-5 mt-4">
-                    <h1 className="col-sm-9 mb-2" style={{color: 'blue'}}>{title}</h1>
-                    <h5 className="col-sm-9 mb-5">{userDetailFullname}, {countryName}</h5>
-                    <p className="col-7 ">{format(parseISO(createdAt), "MM-dd-yyyy")}</p>
-                    <img className="col-7 mb-3" src={image} alt="" />
-                    <p className="berita-isi col-sm-9 ">{content}</p>
-                </div>
-            </div>
-        </>
-    )
-}
+const CategoryDetailCard = ({
+  title,
+  createdAt,
+  image,
+  content,
+  userDetailFullname,
+  countryName,
+}) => {
+  return (
+    <>
+       <div
+        className="news-detail-background container px-5 py-4 rounded-4"
+        style={{ backgroundColor: "#F9FBFF" }}>
+        <h1 className="fw-bolder">{title}</h1>
+
+        <p className="">{format(parseISO(createdAt), "MM-dd-yyyy")}</p>
+        <img className=" mb-3 rounded-4 img-fluid" src={image} alt="" />
+        <h5 className="fw-light">
+          {userDetailFullname}, {countryName}
+        </h5>
+        <p className=" col-sm-9 ">{content}</p>
+      </div>
+    </>
+  );
+};
 
 export default CategoryDetailCard;

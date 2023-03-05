@@ -46,10 +46,11 @@ function Login ()  {
     //     console.log(error)
     //   })
         return (
-            <div className="container mt-5">
+            <div className="container-fluid">
                 <div className="row justify-content-center">
-                    <div className="card col-md-6 p-5">
-                    <h2>Login</h2>
+                    <h1 className='text-center fw-bolder my-5' style={{ color : "#0D6FFB" }}>Selamat Datang di ASEAN YOUTH FORUM NEWS</h1>
+                    <div className="card  col-xl-6 col-md-8 col-sm-10 p-4 border-0 " style={{ background: "#ECF2FF" }}>
+                    <h2 className='text-center fw-bolder' style={{ color : "#0D6FFB" }}>Login</h2>
                     <div ref={errorRef} className={errMsg ? "alert alert-danger d-flex align-items-center" : "d-none"} aria-live="assertive" role="alert">
                         <MdWarning className='me-1' size={25}></MdWarning>
                         <div id='error'>
@@ -57,22 +58,18 @@ function Login ()  {
                         </div>
                     </div>
                     <form onSubmit={handleSubmit}>
-                        <div className="form-group mb-2">
-                            <label htmlFor="email">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" placeholder="Email"  required/>
+                        <div className="form-group my-3">
+                            <label htmlFor="email"><h4>Email</h4></label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control border-0 p-2" placeholder="Email"  required/>
                         </div>
-                        <div className="form-group mb-2">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" placeholder="Password" />
+                        <div className="form-group my-3">
+                            <label htmlFor="exampleInputPassword1"><h4>Password</h4></label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control border-0 p-2" placeholder="Password" />
                         </div>
-                        <div className="form-check mb-2">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
-                        </div>
-                        <button className="btn btn-primary bg-gradient btn-block" type="submit">Login</button>    
+                        <button className="btn bg-gradient btn-block mt-1 text-light" type="submit"  style={{ background: "#0D6FFB" }}>Login</button>    
                     </form>
-                    <p className='my-2'>Don't have an account? <Link to={"/register"}>Register here</Link></p>
-                    <p className='my-2'><Link to={"/loginadmin"}>Login sebagai Admin</Link></p> 
+                    <p className='mt-5'>Belum punya akun? <Link to={"/register"}>Register here</Link></p>
+                    <p className=''><Link to={"/loginadmin"}>Login admin</Link></p> 
                     </div>
                 </div>
             </div> 

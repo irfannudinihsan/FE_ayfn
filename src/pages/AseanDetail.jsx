@@ -28,26 +28,35 @@ function AseanDetail () {
 
     return (
         <>
-        <Navbar/>
-        <BackComponent/>
-        {
-            news ? (
-                <div className="container mt-3" key={news.id}>
-                <div className="berita-body container mx-5 mt-4">
-                    <AseanDetailCard
-                        title={news.title}
-                        createdAt={news.createdAt}
-                        countryName={news.Country.name}
-                        userDetailFullname={news.User.UserDetail.fullName}
-                        image={news.image}
-                        content={news.content}
-                    />
-                </div>
-            </div>
-            ) : <AiOutlineLoading3Quarters size={100} style={{justifyContent: "center" }}/>
+       <Navbar />
+      <div className="container mt-3">
+        <Link to={`/`}>
+          <button type="button" className="btn btn-lg">
+            <MdArrowBack />
+          </button>
+        </Link>
+      </div>
+      {news ? (
+        <div className="container mt-3" key={news.id}>
+          <div className="berita-body container mx-5 mt-4">
+            <CategoryDetailCard
+              title={news.title}
+              createdAt={news.createdAt}
+              countryName={news.Country.name}
+              userDetailFullname={news.User.UserDetail.fullName}
+              image={news.image}
+              content={news.content}
+            />
+          </div>
+        </div>
+      ) : (
+        <AiOutlineLoading3Quarters
+          size={100}
+          style={{ justifyContent: "center" }}
+        />
+      )}
+    </>
         
-        }
-        </>
     )
 }
 

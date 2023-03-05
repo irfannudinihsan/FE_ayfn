@@ -6,7 +6,7 @@ const BackComponent = () => {
         <>
         <div className="container mt-4">
         <Link to={"/"}>
-            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
+            <button type="button" className="btn btn-lg "><MdArrowBack/></button>
         </Link>
         </div>
         </>       

@@ -13,25 +13,24 @@ function Asean(){
     const {id} = params
     console.log(id)
     const [isLoading, setIsLoading] = useState(true);
-    const [country, setCountry] = useState([]);
+    const [news, setNews] = useState([]);
   
         
     useEffect(() => {
         axios.get(URL+id).then((response) => {
-          setCountry(response.data);
+          setNews(response.data);
           setIsLoading(false);
         });
       }, []);
 
-      console.log(country);
+      console.log(news);
     
     return(
         <>
             <Navbar/>
-            <div className="card mb-3 mx-auto" >
-            <div className="mx-auto row g-0">
-            {country.map((asean) => {
-                return <div className='col-md-4 mt-2 img-fluid rounded-start col-md-8 card-body card-title card-text' key={asean.id}>
+            <div className="container" >
+            {news.map((asean) => {
+                return <div className='' key={asean.id}>
                     <AseanCard
                         id={asean.id}
                         image={asean.image}
@@ -42,7 +41,7 @@ function Asean(){
                     />
                 </div>
             })}
-            </div>
+            
             </div>
           <Footer/>
         </>

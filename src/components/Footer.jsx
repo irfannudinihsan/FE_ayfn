@@ -1,33 +1,28 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo_ayfn_nocolor.png";
 import logoAyf from "../assets/LogoAYF.png";
 
 const Footer = () => {
     return(
         <>
-        <footer className="bg-primary text-white pt-5 pb-4">
-            <div className ="container text-center text-md-left">
-                <div className="row text-center text-md-left">
-                    <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <img src={logo} alt="" width="90" height="50"/>
-                    </div>
-
-                    <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6>Tentang kami</h6>
-                        <h6>Kebijakan Privasi</h6>
-                        <h6>Hubungi kami</h6>
-                    </div>
-
-                    <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h5>Challenge Partner Kami</h5>
-                        <img src={logoAyf} alt="" width="180" height="150"/>
-                    </div>
-
-                    <div className="mt-5 fw-bold">
-                        <p>Copyright @2022 Febe29 - Asean Youth Forum | All Right Reserved
-                        </p>
-                    </div>
+         <footer className=' container-fluid' style={{ padding : 20, background : "#0D6FFB", color : "white" }}>
+            <div className='row '>
+                <div className='col-md-4 col-lg-4 col-xl-2 mx-auto mt-4 '><h4>Asean Youth Forum News</h4>
+                <img  className="img-fluid" src={"./src/assets/logo_ayfn_nocolor.png"} alt="" style={{ width : 140 }} />
+                
+                </div>
+                <div className='col-md-4 col-lg-3 col-xl-2 mx-auto mt-3'><h4>Challenge Partner</h4>
+                <img  className="img-fluid" src={"./src/assets/logoAYF.png"} alt="" style={{ width : 140 }}/>
+               </div>
+                <div className='col-md-3 col-lg-3 col-xl-2 mx-auto mt-3'><h4>Contact</h4>
+                <p>aseanyouthforumnews@gmail.com</p>
+                <p>08123456789</p>
+                <p>Jalanin aja No.100 Yogyakarta</p>
+                <ul>
+                    
+                </ul>
                 </div>
             </div>
+        
         </footer>
         </>
     )
