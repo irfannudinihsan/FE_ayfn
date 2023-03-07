@@ -27,7 +27,6 @@ const FormAdmin = () => {
     setPublished(response.data);
   };
 
-
   const getUnPublished = async () => {
     const response = await axios.get(
       "https://ayfnfebe29.up.railway.app/news/needProceed"
@@ -43,8 +42,8 @@ const FormAdmin = () => {
       "https://ayfnfebe29.up.railway.app/news/needProceed"
     );
     let tempArr = response1.data.concat(response2.data);
-    setAllNews(tempArr.sort((x,y) => x.id - y.id));
-  }
+    setAllNews(tempArr.sort((x, y) => x.id - y.id));
+  };
 
   const deleteUser = async (id) => {
     try {
@@ -77,69 +76,101 @@ const FormAdmin = () => {
     // });
   };
 
-  if(isLoading){
+  if (isLoading) {
     return <div className="">Loading...</div>;
-  }
-  else{
+  } else {
     return (
       <>
-      {console.log(allNews)}
+        {console.log(allNews)}
         <NavbarAdmin />
         <h2
           className="flex items-center justify-between my-4"
-          style={{ textAlign: "center" }}
-        >
+          style={{ textAlign: "center" }}>
           Dasboard Admin
         </h2>
-        <div className="container-fluid p-5">
-          <div className="table-responsive">
-          <table
-            className="table table-bordered table-striped"
-            style={{ textAlign: "center" }}
-          >
-            <thead className="thead-dark">
-              <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Summary</th>
-                <th>CategoryId</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              { allNews.map((news, index) => (
-                <tr key={news.id}>
-                  <td>{index + 1}</td>
-                  <td>{news.title}</td>
-                  <td>{news.content}</td>
-                  <td>{news.summary}</td>
-                  <td>{news.categoryId}</td>
-                  <td>
-                    <div className="d-flex">
-                      {news.isPublished ?
-                      <button className="btn btn-warning bg-gradient mx-1 text-nowrap" onClick={() => unpublishUser(news.id)}>
-                        <MdUnpublished />
-                        UnPublish
-                      </button>
-                      :
-                      <Link className="mx-1" to={`/publishnews/${news.id}`}>
-                        <button className="btn btn-primary bg-gradient text-nowrap">
-                          <MdPublish />
-                          Publish
-                        </button>
-                      </Link>
-                      }
-                      <button className="btn btn-danger bg-gradient mx-1 text-nowrap" onClick={() => deleteUser(news.id)}>
-                        <FontAwesomeIcon icon={faTrash} />
-                        Delete
-                      </button>
-                    </div>
-                  </td>
+        <div className="container-fluid p-3">
+          <div className="">
+            <table className="table my-3" style={{ textAlign: "center" }}>
+              <thead style={{ backgroundColor: "#0D6FFB", color: "white" }}>
+                <tr>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Content</th>
+                  <th>Summary</th>
+                  <th>Image</th>
+                  <th>CategoryId</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody style={{ backgroundColor: "#F9FBFF" }}>
+                {allNews.map((news, index) => (
+                  <tr key={news.id}>
+                    <td>{index + 1}</td>
+                    <td>{news.title}</td>
+                    <td>{news.content}  </td>
+                    <td>{news.summary}</td>
+                    <td>
+                      <img src={news.image} alt="" style={{ width: "150px" }} />
+                    </td>
+                    <td>{news.categoryId}</td>
+                    <td>
+                      <div className="">
+                        {news.isPublished ? (
+
+                          
+                          <Link
+                            style={{
+                              backgroundColor: "purple",
+                              color: "white",
+                              textDecoration: "none",
+                              borderRadius: "4px",
+                              display : "inline-block",
+                              padding : "6px",
+                              margin : "6px"
+                            }}
+                            onClick={() => unpublishUser(news.id)}>
+                            <MdUnpublished />
+                            UnPublish
+                          </Link>
+                        ) : (
+                          <Link className="" to={`/publishnews/${news.id}`}
+                          
+                          style={{
+                            backgroundColor: "green",
+                            color: "white",
+                            textDecoration: "none",
+                            borderRadius: "4px",
+                            display : "inline-block",
+                            padding : "6px",
+                            margin : "6px"
+                          }}
+                          >
+                            <MdPublish />
+                            Publish
+                          </Link>
+                        )}
+                        <Link className="" onClick={() => deleteUser(news.id)}
+                        
+                        style={{
+                          backgroundColor: "red",
+                          color: "white",
+                          textDecoration: "none",
+                          borderRadius: "4px",
+                          display : "inline-block",
+                          padding : "6px",
+                          margin : "6px"
+                        }}
+                        
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                          Delete
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <Footer />

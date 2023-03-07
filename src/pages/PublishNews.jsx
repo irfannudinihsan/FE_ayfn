@@ -73,44 +73,44 @@ const PublishNews = () => {
       <div className="flex items-center justify-between my-4 text-center">
         <h2>News</h2>
       </div>
-      <div className="container mt-3 mb-2">
+     
         <Link to={"/formadmin"}>
-            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
-        </Link>
-        </div>
-        <div className="card p-5 bg-primary" style={{opacity:"50"}}>
-    <div className="columns is-centered">
-      <div className="column is-half">
+            <button type="button" class="btn btn-lg">
+              <MdArrowBack />
+            </button>
+          </Link>
+          <div className="news-detail-background container px-5 py-4 rounded-4"
+            style={{ backgroundColor: "#F9FBFF" }}>
+    
         <form onSubmit={data}>
-          <div className="field">
+          <div className="field-3">
             <label className="label">Title</label>
             <div className="control">
               <input
+              className="input border-0 p-2"
                 type="text"
-                className="input"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                // placeholder="Name"
               />
             </div>
           </div>
           <div className="form-group mb-3">
             <label htmlFor="image">Image</label>
-              <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" placeholder="Image Link" required/>
+              <input onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control border-0" placeholder="Image Link" required/>
           </div>
-          <div className="field">
+          <div className="field my-3">
             <label className="label">Content</label>
             <div className="control">
               <textarea
                 type="text"
-                className="input"
+                className="form-control input border-0"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 // placeholder="Email"
               />
             </div>
           </div>
-          <div className="field">
+          <div className="field my-3">
             <label className="label">Summary</label>
             <div className="control">
               <textarea
@@ -126,6 +126,7 @@ const PublishNews = () => {
             <label htmlFor="categories">Category</label>
               <select name="categoriesId" id="categories" className='form-select' onChange={(e) => setCategoryName(e.target.value)} required>
                 <option value={categoryName} selected>{categoryName}</option>
+                
                 {
                 categories.map((item, id) => {
                 return <option value={item.id}>{item.name}</option>
@@ -137,8 +138,6 @@ const PublishNews = () => {
             <button type="submit" className="btn btn-success">Publish</button>
           </div>
         </form>
-      </div>
-    </div>
     </div>
     </div>
     </div>

@@ -51,11 +51,11 @@ function Login ()  {
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group my-3">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email"><h4>Email</h4></label>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control border-0 p-2" placeholder="Email"  required/>
                         </div>
                         <div className="form-group my-3">
-                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <label htmlFor="exampleInputPassword1"><h4>Password</h4></label>
                             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control border-0 p-2" placeholder="Password"  />
                         </div>
                         <button className="btn btn-primary bg-gradient btn-block" type="submit">Login</button>    

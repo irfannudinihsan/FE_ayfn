@@ -45,7 +45,7 @@ const AddCountry = () => {
         <h2>Create Data Country</h2>
       </div>
       <div className="container mt-3 mb-2">
-        <Link to={"/country"}>
+      <Link to={"/country"}>
             <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
         </Link>
         </div>

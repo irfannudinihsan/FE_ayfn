@@ -4,10 +4,7 @@ import { MdLogin, MdLogout, MdShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
-
-
-const primary = "#0D6FFB"
+const primary = "#0D6FFB";
 const Logout = () => {
   localStorage.clear();
   location.href = "/";
@@ -16,8 +13,8 @@ const Logout = () => {
 const Navbar = ({ id, setNews }) => {
   const [keyword, setKeyword] = useState("");
   const [title, setTitle] = useState("");
-  
-//   const [news, setNews] = useState([]);
+
+  //   const [news, setNews] = useState([]);
   useEffect(() => {
     axios
       .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
@@ -38,7 +35,9 @@ const Navbar = ({ id, setNews }) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg" style={{ padding: 15, background :  primary }} >
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ padding: 15, background: primary }}>
         <div className="container">
           <span className="navbar-brand">
             <Link to={"/"}>
@@ -59,7 +58,7 @@ const Navbar = ({ id, setNews }) => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto ps-2">
-              <li className="nav-item" >
+              <li className="nav-item">
                 <Link
                   to={"/trending"}
                   style={{ color: "white", marginRight: "2rem" }}
@@ -82,7 +81,7 @@ const Navbar = ({ id, setNews }) => {
 
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to={`category/${1}`}  className="dropdown-item">
+                    <Link to={`category/${1}`} className="dropdown-item">
                       Economy
                     </Link>
                   </li>
@@ -124,7 +123,7 @@ const Navbar = ({ id, setNews }) => {
                 <ul className="dropdown-menu ">
                   <li>
                     <Link to={`country/${1}`} className="dropdown-item ">
-                    Brunei Darussalam
+                      Brunei Darussalam
                     </Link>
                   </li>
                   <li>
@@ -134,7 +133,7 @@ const Navbar = ({ id, setNews }) => {
                   </li>
                   <li>
                     <Link to={`country/${3}`} className="dropdown-item">
-                    Indonesia
+                      Indonesia
                     </Link>
                   </li>
                   <li>
@@ -189,7 +188,11 @@ const Navbar = ({ id, setNews }) => {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex input-grup my-1" role="search" onSubmit={searchByTitle} style={{ marginRight: 50 }}>
+            <form
+              className="d-flex input-grup my-1"
+              role="search"
+              onSubmit={searchByTitle}
+              style={{ marginRight: 50 }}>
               <input
                 className="form-control  input"
                 type="search"
@@ -203,9 +206,10 @@ const Navbar = ({ id, setNews }) => {
                 className="btn btn-light fw-bold"
                 type="submit"
                 style={{
-                    borderTopLeftRadius: 0,
-                    borderBottomLeftRadius: 0, color : primary, 
-                  }}
+                  borderTopLeftRadius: 0,
+                  borderBottomLeftRadius: 0,
+                  color: primary,
+                }}
                 onClick={searchByTitle}>
                 Search
               </button>
@@ -216,27 +220,39 @@ const Navbar = ({ id, setNews }) => {
                     <Link to={"/formdata"} style={{color: 'white', padding:"1rem"}} className="nav-link active" >Create Data</Link>
                 </li> */}
 
-              <li className="nav-item">
+              <li className="nav-item ">
                 {localStorage.getItem("token") ? (
                   <>
-                    <ul className="nav justify-content-start">
-                      <li className="nav-item nav-link active">
-                        <Link
-                          to={"/data"}
-                          style={{ color: "white" }}
-                          className="nav-link active">
-                          <MdShoppingCart size={27} />
-                          Data
-                        </Link>
-                      </li>
+                    {/* <ul className="nav justify-content-start"> */}
+                    {/* <li className="nav-item nav-link active"> */}
 
-                      <button
-                        className="btn nav-link text-white"
-                        data-bs-toggle="modal"
-                        data-bs-target="#logout">
-                        Logout <MdLogout size={27} style={{ color: "white" }} />
-                      </button>
-                    </ul>
+                   
+                    <Link
+                      to={"/data"}
+                      style={{ color: "white", display: "inline-block" }}
+                      className="nav-link active">
+                      Data
+                    </Link>
+                    {/* </li> */}
+
+                    {/* </ul> */}
+
+                    <Link
+                      style={{
+                        color: "#0D6FFB",
+                        paddingRight: 16,
+                        paddingTop: 8,
+                        paddingBottom: 8,
+                        paddingLeft: 16,
+                        background: "white",
+                        borderRadius: 8,
+                        display: "inline-block",
+                      }}
+                      className="nav-link active fw-bold"
+                      data-bs-toggle="modal"
+                      data-bs-target="#logout">
+                      Logout
+                    </Link>
                     <div
                       className="modal fade"
                       id="logout"
@@ -289,12 +305,10 @@ const Navbar = ({ id, setNews }) => {
                         paddingBottom: 8,
                         paddingLeft: 16,
                         background: "white",
-                        borderRadius: 8, 
-                        
+                        borderRadius: 8,
                       }}
                       className="nav-link active fw-bold">
                       Login
-                      
                     </Link>
                   </>
                 )}
