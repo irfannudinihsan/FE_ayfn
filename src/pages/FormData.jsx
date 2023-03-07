@@ -107,6 +107,8 @@ const FormData = () => {
                       color: "white",
                       textDecoration: "none",
                       borderRadius: "4px",
+                      display : "inline-block",
+                      margin : "10px"
                     }}>
                     <FontAwesomeIcon icon={faEdit} /> Edit
                   </Link>
@@ -119,9 +121,10 @@ const FormData = () => {
                       color: "white",
                       textDecoration: "none",
                       borderRadius: "4px",
+                      display : "inline-block",
+                      margin : "10px"
                     }}>
-                    <FontAwesomeIcon icon={faTrash} />
-                    Delete
+                    <FontAwesomeIcon icon={faTrash}/>Delete
                   </Link>
                 </td>
               </tr>
