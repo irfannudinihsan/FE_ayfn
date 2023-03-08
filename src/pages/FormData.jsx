@@ -51,11 +51,11 @@ const FormData = () => {
   return (
     <>
       <Navbar />
-      <div className="container-fluid">
+      <div className="container">
         <h2
           className="flex items-center justify-between my-4"
           style={{ textAlign: "center" }}>
-          Dasboard Berita
+          <h2 className="my-5 fw-bold">Dasboard</h2>
         </h2>
         <Link
           to={`/add`}
@@ -69,7 +69,7 @@ const FormData = () => {
           <FontAwesomeIcon icon={faPlus} /> Add Data
         </Link>
 
-        <table className="table my-3" style={{ textAlign: "center" }}>
+        <table className="table my-3 rounded" style={{ textAlign: "center" }}>
           <thead style={{ backgroundColor: "#0D6FFB", color: "white" }}>
             <tr>
               <th>No</th>

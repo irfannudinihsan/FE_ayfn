@@ -86,7 +86,7 @@ const AddData = () => {
           </Link>
 
           <div
-            className="news-detail-background container px-5 py-4 rounded-4"
+            className="news-detail-background container px-5 py-4 mb-5 rounded-4"
             style={{ backgroundColor: "#F9FBFF" }}>
             <form onSubmit={saveData}>
               <div className="field my-3">
