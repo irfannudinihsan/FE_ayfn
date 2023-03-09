@@ -1,36 +1,74 @@
+import Navbar from "../components/Navbar";
 import NewsCard from "../components/NewsCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function News({ news }) {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [news, setNews] = useState([]);
+function News() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [news, setNews] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [title, setTitle] = useState("");
 
-  // useEffect(() => {
-  //     axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
-  //       setNews(res.data);
-  //       setIsLoading(false);
-  //     });
-  //   }, []);
+  useEffect(() => {
+    axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
+      setNews(res.data);
+      setIsLoading(false);
+    });
+  }, []);
 
-  //   console.log(news);
+  const searchByTitle = (e) => {
+    e.preventDefault();
+    setKeyword(title);
+    axios
+      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
+      .then((res) => {
+        setNews(res.data);
+      });
+  };
+  console.log(news);
 
   return (
     <>
-      <div className="container-fluid  p-5" style={{ background: "#ECF2FF" }}>
-
-        <h1 className="text-center fw-bold">News</h1>
+      <Navbar />
+      <div className="container mt-5 ">
+        <form
+          className="d-flex input-grup col-xl-4 col-md-6 col-sm-3"
+          role="search"
+          onSubmit={searchByTitle}
+          style={{ marginRight: 50 }}>
+          <input
+            className="form-control  input"
+            type="search"
+            placeholder="Cari Judul"
+            aria-label="Search"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            style={{ borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
+          />
+          <button
+            className="btn bg-gradient btn-block text-light"
+            type="submit"
+            style={{
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              background: "#0D6FFB"
+            }}
+            onClick={searchByTitle}>
+            Search
+          </button>
+        </form>
 
         <div className="row ">
-          {news.map((article, id) => {
+          {news.map((news, id) => {
             return (
-              <div className=" col-xl-4 col-md-4 col-sm-12 mx-auto" key={id}>
+              <div className=" col-xl-4 col-md-6 col-sm-10 mx-auto" key={id}>
                 <NewsCard
-                  // key={id}
-                  id={article.id}
-                  image={article.image}
-                  title={article.title}
-                  summary={article.summary}
+                  id={news.id}
+                  image={news.image}
+                  title={news.title}
+                  summary={news.summary}
+                  CategoryName={news.Category.name}
+                  createdAt={news.createdAt}
                 />
               </div>
             );

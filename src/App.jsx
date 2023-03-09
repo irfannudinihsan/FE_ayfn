@@ -1,8 +1,7 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
 import './App.css'
 import { Routes, Route, Form } from "react-router-dom";
 import Home from "./pages/Home";
+import News from "./pages/News";
 import Login from "./pages/Login";
 import NewsDetail from "./pages/NewsDetail";
 import Register from "./pages/Register";
@@ -32,8 +31,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/news" element={<News />} />
         <Route path="/homeadmin" element={<HomeAdmin />} />
-        <Route path="/newsdetail/:id" element={<NewsDetail />} />
+        <Route path="/news/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/trending/:id" element={<TrendingDetail />} />
         <Route path="/category/:id" element={<Category />} />

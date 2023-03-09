@@ -15,14 +15,14 @@ const Navbar = ({ id, setNews }) => {
   const [title, setTitle] = useState("");
 
   //   const [news, setNews] = useState([]);
-  useEffect(() => {
+ /*  useEffect(() => {
     axios
       .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
       .then((res) => {
         setNews(res.data);
       });
   }, [title, keyword]);
-
+ */
   const searchByTitle = (e) => {
     e.preventDefault();
     setKeyword(title);
@@ -58,6 +58,15 @@ const Navbar = ({ id, setNews }) => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto ps-2">
+              <li className="nav-item">
+                <Link
+                  to={"/news"}
+                  style={{ color: "white", marginRight: "2rem" }}
+                  className="nav-link active"
+                  aria-current="page">
+                  News
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link
                   to={"/trending"}
@@ -188,33 +197,6 @@ const Navbar = ({ id, setNews }) => {
                 </Link>
               </li>
             </ul>
-            <form
-              className="d-flex input-grup my-1"
-              role="search"
-              onSubmit={searchByTitle}
-              style={{ marginRight: 50 }}>
-              <input
-                className="form-control  input"
-                type="search"
-                placeholder="Cari Judul"
-                aria-label="Search"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                style={{ borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
-              />
-              <button
-                className="btn btn-light fw-bold"
-                type="submit"
-                style={{
-                  borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0,
-                  color: primary,
-                }}
-                onClick={searchByTitle}>
-                Search
-              </button>
-            </form>
-
             <ul className="nav pe-5 justify-content-start">
               {/* <li className="nav-item">
                     <Link to={"/formdata"} style={{color: 'white', padding:"1rem"}} className="nav-link active" >Create Data</Link>
