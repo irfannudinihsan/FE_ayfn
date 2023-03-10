@@ -27,29 +27,14 @@ const AddData = () => {
     formData.append("summary", summary);
     formData.append("image", image);
     formData.append("categoryId", categoryId);
-    // console.log(data.get('image'))
+
     try {
       await axios.post(`/news`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      // navigate("/");
-    } catch (error) {
-      console.log(error.response);
-    }
-
-    try {
-      await axios.post(
-        `https://ayfnfebe29.up.railway.app/news/proceed`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      navigate("/formadmin");
+      navigate("/data");
     } catch (error) {
       console.log(error.response);
     }
@@ -80,7 +65,7 @@ const AddData = () => {
           </div>
 
           <Link to={"/data"}>
-            <button type="button" class="btn btn-lg">
+            <button type="button" className="btn btn-lg">
               <MdArrowBack />
             </button>
           </Link>
@@ -175,11 +160,13 @@ const AddData = () => {
                   className="form-select border-0"
                   onChange={(e) => setCategoryId(e.target.value)}
                   required>
-                  <option value="" selected>
-                    Select Category
-                  </option>
+                  <option value="">Select Category</option>
                   {categories.map((item, id) => {
-                    return <option value={item.id}>{item.name}</option>;
+                    return (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
                   })}
                 </select>
               </div>

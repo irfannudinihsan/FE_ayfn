@@ -34,15 +34,15 @@ const FormData = () => {
       },
     };
 
-    axios(config).then(function (response) {
-      log("ini respon create: ", response);
-      swal({
-        title: "Program berhasil dibuat!",
-        icon: "success",
-        button: "OK!",
-      });
-      Navigate("/organization");
-    });
+    // axios(config).then(function (response) {
+    //   log("ini respon create: ", response);
+    //   swal({
+    //     title: "Program berhasil dibuat!",
+    //     icon: "success",
+    //     button: "OK!",
+    //   });
+    //   Navigate("/organization");
+    // });
     // .catch(function (eror) {
     //   log('ini eror create: ', error);
     // });
@@ -55,7 +55,7 @@ const FormData = () => {
         <h2
           className="flex items-center justify-between my-4"
           style={{ textAlign: "center" }}>
-          <h2 className="my-5 fw-bold">Dasboard</h2>
+          Dasboard
         </h2>
         <Link
           to={`/add`}

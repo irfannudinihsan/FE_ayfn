@@ -33,20 +33,6 @@ const EditData = () => {
   const updateData = async (e) => {
     console.log(image);
     e.preventDefault();
-    // try {
-    //   await instance.put(`/news/${id}`, {
-    //     title,
-    //     content,
-    //     summary,
-    //     categoryName,
-    //     image,
-    //     // categories,
-
-    //   });
-    //   navigate("/");
-    // } catch (error) {
-    //   console.log(error);
-    // }
     const formData = new FormData();
 
     formData.append("title", title);
@@ -54,7 +40,6 @@ const EditData = () => {
     formData.append("summary", summary);
     formData.append("image", image);
     formData.append("categoryId", categoryName);
-    // console.log(data.get('image'))
     try {
       await instance.put(`/news/${id}`, formData, {
         headers: {
@@ -87,83 +72,96 @@ const EditData = () => {
             <h2>Update Data</h2>
           </div>
           <Link to={"/data"}>
-            <button type="button" class="btn btn-lg">
+            <button type="button" className="btn btn-lg">
               <MdArrowBack />
             </button>
           </Link>
-          <div className="news-detail-background container px-5 py-4 rounded-4"   style={{ backgroundColor: "#F9FBFF" }}>
-            
-                <form onSubmit={updateData}>
-                  <div className="field my-3">
-                    <label className="label"><h5>Title</h5></label>
-                    <div className="control">
-                      <input
-                        type="text"
-                        className="input border-0 p-2 "
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        // placeholder="Name"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group  my-3">
-                    <label htmlFor="image"><h5>Image</h5></label>
-                    <input
-                      onChange={(e) => setImage(e.target.files[0])}
-                      type="file"
-                      className="form-control border-0"
-                      placeholder="Image Link"
-                      required
-                    />
-                  </div>
-                  <div className="field my-3">
-                    <label className="label"><h5>Content</h5></label>
-                    <div className="control">
-                      <textarea
-                      rows="5" 
-                        type="text"
-                        className="input border-0"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        // placeholder="Email"
-                      />
-                    </div>
-                  </div>
-                  <div className="field my-3">
-                    <label className="label"><h5>Summary</h5></label>
-                    <div className="control">
-                      <textarea
-                        type="text"
-                        className="input border-0"
-                        value={summary}
-                        onChange={(e) => setSummary(e.target.value)}
-                        // placeholder="Email"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group my-3">
-                    <label htmlFor="categories">Category</label>
-                    <select
-                      name="categoriesId"
-                      id="categories"
-                      className="form-select border-0"
-                      onChange={(e) => setCategoryName(e.target.value)}
-                      required>
-                      <option value={categoryName} selected>
-                        {categoryName}
-                      </option>
-                      {categories.map((item, id) => {
-                        return <option value={item.id}>{item.name}</option>;
-                      })}
-                    </select>
-                  </div>
-                  <div className="mb-2 mt-4">
-                    <button type="submit" className="btn btn-success">
-                      Update
-                    </button>
-                  </div>
-                </form>
+          <div
+            className="news-detail-background container px-5 py-4 rounded-4"
+            style={{ backgroundColor: "#F9FBFF" }}>
+            <form onSubmit={updateData}>
+              <div className="field my-3">
+                <label className="label">
+                  <h5>Title</h5>
+                </label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input border-0 p-2 "
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    // placeholder="Name"
+                  />
+                </div>
               </div>
+              <div className="form-group  my-3">
+                <label htmlFor="image">
+                  <h5>Image</h5>
+                </label>
+                <input
+                  onChange={(e) => setImage(e.target.files[0])}
+                  type="file"
+                  className="form-control border-0"
+                  placeholder="Image Link"
+                  required
+                />
+              </div>
+              <div className="field my-3">
+                <label className="label">
+                  <h5>Content</h5>
+                </label>
+                <div className="control">
+                  <textarea
+                    rows="5"
+                    type="text"
+                    className="input border-0"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    // placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div className="field my-3">
+                <label className="label">
+                  <h5>Summary</h5>
+                </label>
+                <div className="control">
+                  <textarea
+                    type="text"
+                    className="input border-0"
+                    value={summary}
+                    onChange={(e) => setSummary(e.target.value)}
+                    // placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div className="form-group my-3">
+                <label htmlFor="categories">Category</label>
+                <select
+                  name="categoriesId"
+                  id="categories"
+                  className="form-select border-0"
+                  onChange={(e) => setCategoryName(e.target.value)}
+                  required>
+                  {/* <option value="">
+                    Select Category
+                  </option> */}
+                  {categories.map((item, id) => {
+                    return (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className="mb-2 mt-4">
+                <button type="submit" className="btn btn-success">
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <Footer />

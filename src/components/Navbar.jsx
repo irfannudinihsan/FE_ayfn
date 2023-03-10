@@ -14,25 +14,6 @@ const Navbar = ({ id, setNews }) => {
   const [keyword, setKeyword] = useState("");
   const [title, setTitle] = useState("");
 
-  //   const [news, setNews] = useState([]);
- /*  useEffect(() => {
-    axios
-      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
-      .then((res) => {
-        setNews(res.data);
-      });
-  }, [title, keyword]);
- */
-  const searchByTitle = (e) => {
-    e.preventDefault();
-    setKeyword(title);
-    axios
-      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
-      .then((res) => {
-        setNews(res.data);
-      });
-  };
-
   return (
     <>
       <nav
@@ -85,7 +66,6 @@ const Navbar = ({ id, setNews }) => {
                   aria-expanded="false"
                   style={{ color: "white", marginRight: "2rem" }}>
                   Category
-                  {/* <Link to={"/category"} style={{color: 'white'}} >Category</Link> */}
                 </span>
 
                 <ul className="dropdown-menu">
@@ -126,7 +106,6 @@ const Navbar = ({ id, setNews }) => {
                   aria-expanded="false"
                   style={{ color: "white", marginRight: "2rem" }}>
                   Asean
-                  {/* <Link to={"/asean"} style={{color: 'white'}} >Asean</Link> */}
                 </span>
 
                 <ul className="dropdown-menu ">
@@ -180,10 +159,6 @@ const Navbar = ({ id, setNews }) => {
                       Vietnam
                     </Link>
                   </li>
-
-                  {/* {countries.map((item, index) => {
-                                        return <li><Link to={`country/${item.id}`}><span className="dropdown-item" >{item.name}</span></Link></li>
-                                    })} */}
                 </ul>
               </li>
 
@@ -198,26 +173,23 @@ const Navbar = ({ id, setNews }) => {
               </li>
             </ul>
             <ul className="nav pe-5 justify-content-start">
-              {/* <li className="nav-item">
-                    <Link to={"/formdata"} style={{color: 'white', padding:"1rem"}} className="nav-link active" >Create Data</Link>
-                </li> */}
 
               <li className="nav-item ">
                 {localStorage.getItem("token") ? (
                   <>
-                    {/* <ul className="nav justify-content-start"> */}
-                    {/* <li className="nav-item nav-link active"> */}
 
-                   
                     <Link
                       to={"/data"}
                       style={{ color: "white", display: "inline-block" }}
                       className="nav-link active">
                       Data
                     </Link>
-                    {/* </li> */}
-
-                    {/* </ul> */}
+                    <Link
+                      to={"/profile"}
+                      style={{ color: "white", display: "inline-block" }}
+                      className="nav-link active">
+                      Profile
+                    </Link>
 
                     <Link
                       style={{
