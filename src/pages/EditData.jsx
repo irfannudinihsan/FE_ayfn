@@ -62,6 +62,7 @@ const EditData = () => {
     setImage(response.data.image);
     // setCategories(response.data.categories);
   };
+  console.log()
 
   return (
     <>

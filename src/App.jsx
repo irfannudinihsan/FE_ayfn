@@ -10,7 +10,7 @@ import Category from "./pages/Category";
 import Asean from "./pages/Asean";
 import About from "./pages/About";
 import FormData from "./pages/FormData";
-import EditProfile from "./pages/EditProfile";
+import ProfileData from "./pages/ProfileData";
 import AddData from "./pages/AddData";
 import EditData from "./pages/EditData";
 import FormCategory from "./pages/FormCategory";
@@ -46,7 +46,7 @@ function App() {
         <Route path="/loginadmin" element={<LoginAdmin />} />
         <Route path="/register" element={<Register />} />
         <Route path="/data" element={<FormData />} />
-        <Route path="/profile" element={<EditProfile />} />
+        <Route path="/profile" element={<ProfileData />} />
         <Route path="/add" element={<AddData />} />
         <Route path="/edit/:id" element={<EditData />} />
         <Route path="/category" element={<FormCategory />} />

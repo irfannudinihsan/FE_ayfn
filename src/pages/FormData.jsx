@@ -13,10 +13,13 @@ const FormData = () => {
     getUsers();
   }, []);
 
+  console.log(users)
+
   const getUsers = async () => {
     const response = await axios.get("/news");
     setUser(response.data);
   };
+
 
   const deleteUser = async (id) => {
     try {
