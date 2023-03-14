@@ -9,28 +9,13 @@ import { MdArrowBack } from "react-icons/md";
 
 const AddCategory = () => {
   const [name, setName] = useState("");
-//   const [content, setContent] = useState("");
-//   const [summary, setSummary] = useState("");
-//   const [categoryId, setCategoryId] = useState("");
   const navigate = useNavigate();
 
   const saveData = async (e) => {
     e.preventDefault();
-    const formData = new FormData()
-
-    formData.append('name', name);
-    // formData.append('content', content);
-    // formData.append('summary', summary);
-    // formData.append('image', image);
-    // formData.append('categoryId', categoryId);
-    // console.log(data.get('image'))
     try {
-      await axios.post(`/category`, formData,{
-        headers: {
-          'Content-Type': 'multipart/form-data'
-      }
-      });
-      // navigate("/");
+      await instance.post("/category", { name });
+      navigate("/category");
     } catch (error) {
       console.log(error.response);
     }
@@ -38,40 +23,49 @@ const AddCategory = () => {
 
   return (
     <>
-    <NavbarAdmin/>
-    <div className="container">
-      <div className="row justify-content-center">
-      <div className="flex items-center justify-between my-4 text-center">
-        <h2>Create Data Category</h2>
-      </div>
-      <div className="container mt-3 mb-2">
-        <Link to={"/category"}>
-            <button type="button" class="btn btn-primary"><MdArrowBack/>Back</button>
-        </Link>
+      <NavbarAdmin />
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="flex items-center justify-between my-4 text-center">
+            <h2>Create Data Category</h2>
+          </div>
+
+          <Link to={"/category"}>
+            <button type="button" className="btn btn-lg">
+              <MdArrowBack />
+            </button>
+          </Link>
+
+          <div
+            className="news-detail-background container px-5 py-4 mb-5 rounded-4"
+            style={{ backgroundColor: "#F9FBFF" }}>
+            <form onSubmit={saveData}>
+              <div className="field my-3">
+                <label htmlFor="label" className="form-label">
+                  Name Category
+                </label>
+
+                <div className="control">
+                  <input
+                    className="input border-0 p-2"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="category"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-2 mt-4">
+                <button type="submit" className="btn btn-success">
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    <div className="columns is-centered">
-      <div className="column is-half">
-        <form onSubmit={saveData}>
-        <div className="mb-3">
-            <label htmlFor="label" className="form-label">Title</label>
-            <textarea className="form-control input" 
-                type="text"
-                // className="input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                // placeholder="Email"
-            />
-          </div>
-          
-          <div className="mb-2 mt-3">
-            <button type="submit" className="btn btn-success">Create</button>
-          </div>
-        </form>
       </div>
-    </div>
-    </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 };

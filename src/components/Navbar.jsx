@@ -185,7 +185,7 @@ const Navbar = ({ id, setNews }) => {
                       Data
                     </Link>
                     <Link
-                      to={"/profile"}
+                      to={"/profileData"}
                       style={{ color: "white", display: "inline-block" }}
                       className="nav-link active">
                       Profile

@@ -21,7 +21,7 @@ function Login ()  {
         console.log(res);
         console.log(res.data);
         localStorage.setItem('token', res.data.token);
-        location.href='/homeadmin';
+        location.href='/formAdmin';
       }).catch(err => {
         console.log(err.response.status)
         if(err.response.status === 401){

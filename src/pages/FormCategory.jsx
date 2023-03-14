@@ -14,38 +14,19 @@ const FormCategory = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("/category");
+    const response = await instance.get("/category");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`/category/${id}`);
+      await instance.delete(`/category/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
     }
 
-    var config = {
-      method: "post",
-      url: `/category`,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-
-    axios(config).then(function (response) {
-      log("ini respon create: ", response);
-      swal({
-        title: "Program berhasil dibuat!",
-        icon: "success",
-        button: "OK!",
-      });
-      Navigate("/organization");
-    });
-    // .catch(function (eror) {
-    //   log('ini eror create: ', error);
-    // });
+  
   };
 
   return (

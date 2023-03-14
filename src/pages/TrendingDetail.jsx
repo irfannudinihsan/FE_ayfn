@@ -29,7 +29,7 @@ function TrendingDetail() {
       <Navbar />
       <div className="container mt-3">
         <Link to={"/trending"}>
-          <button type="button" class="btn btn-lg">
+          <button type="button" className="btn btn-lg">
             <MdArrowBack />
           </button>
         </Link>

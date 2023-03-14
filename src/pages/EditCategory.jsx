@@ -9,56 +9,28 @@ import { Link } from "react-router-dom";
 
 const EditCategory = () => {
   const [name, setName] = useState("");
-  // const [content, setContent] = useState("");
-  // const [summary, setSummary] = useState("");
-  // const [categoryId, setCategoryId] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    getUserById();
+    getCategoryId();
   }, []);
 
   const updateData = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   await axios.patch(`https://ayfnfebe29.up.railway.app/category/${id}`, {
-    //     name,
-    //     // content,
-    //     // summary,
-    //     // categoryId,
-    //   });
-    //   navigate("/");
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    e.preventDefault();
 
-    const formData = new FormData();
-
-    formData.append("name", name);
-    // formData.append('content', content);
-    // formData.append('summary', summary);
-    // formData.append('image', image);
-    // formData.append('categoryId', categoryName);
-    // console.log(data.get('image'))
     try {
-      await instance.put(`/category/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      // navigate("/");
+      await instance.put(`/category/${id}`, { name });
+      navigate("/category");
     } catch (error) {
       console.log(error.response);
     }
   };
 
-  const getUserById = async () => {
+  const getCategoryId = async () => {
     const response = await instance.get(`/category/${id}`);
     console.log(response);
     setName(response.data.name);
-    // setContent(response.data.content);
-    // setName(response.data.name);
   };
 
   return (
@@ -71,7 +43,7 @@ const EditCategory = () => {
           </div>
 
           <Link to={"/category"}>
-            <button type="button" class="btn btn-lg">
+            <button type="button" className="btn btn-lg">
               <MdArrowBack />
             </button>
           </Link>

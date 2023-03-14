@@ -81,7 +81,7 @@ const FormAdmin = () => {
   } else {
     return (
       <>
-        {console.log(allNews)}
+
         <NavbarAdmin />
         <h2
           className="flex items-center justify-between my-4"

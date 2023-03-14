@@ -11,6 +11,7 @@ import Asean from "./pages/Asean";
 import About from "./pages/About";
 import FormData from "./pages/FormData";
 import ProfileData from "./pages/ProfileData";
+import ProfileEdit from "./pages/ProfileEdit";
 import AddData from "./pages/AddData";
 import EditData from "./pages/EditData";
 import FormCategory from "./pages/FormCategory";
@@ -23,7 +24,6 @@ import TrendingDetail from "./pages/TrendingDetail";
 import CategoryDetail from "./pages/CategoryDetail";
 import AseanDetail from "./pages/AseanDetail";
 import LoginAdmin from "./pages/LoginAdmin";
-import HomeAdmin from "./pages/HomeAdmin";
 import FormAdmin from "./pages/FormAdmin";
 import PublishNews from "./pages/PublishNews";
 
@@ -33,7 +33,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
-        <Route path="/homeadmin" element={<HomeAdmin />} />
         <Route path="/news/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/trending/:id" element={<TrendingDetail />} />
@@ -46,7 +45,8 @@ function App() {
         <Route path="/loginadmin" element={<LoginAdmin />} />
         <Route path="/register" element={<Register />} />
         <Route path="/data" element={<FormData />} />
-        <Route path="/profile" element={<ProfileData />} />
+        <Route path="/profileData" element={<ProfileData />} />
+        <Route path="/profileEdit" element={<ProfileEdit />} />
         <Route path="/add" element={<AddData />} />
         <Route path="/edit/:id" element={<EditData />} />
         <Route path="/category" element={<FormCategory />} />
@@ -55,7 +55,7 @@ function App() {
         <Route path="/country" element={<FormCountry />} />
         <Route path="/addCountry" element={<AddCountry />} />
         <Route path="/editCountry/:id" element={<EditCountry />} />
-        <Route path="/formadmin" element={<FormAdmin />} />
+        <Route path="/formAdmin" element={<FormAdmin />} />
         <Route path="/publishnews/:id" element={<PublishNews />} />
       </Routes>
     </>

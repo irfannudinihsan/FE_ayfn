@@ -17,10 +17,7 @@ const EditData = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  useEffect(() => {
-    getUserById();
-    getCategory();
-  }, []);
+ 
 
   const getCategory = async () => {
     const response = await instance.get(`/category`);
@@ -29,6 +26,25 @@ const EditData = () => {
     setCategories(response.data);
     // setErrMsg('');
   };
+
+  const getUserById = async () => {
+    const response = await instance.get(`/news/detail/${id}`);
+    console.log(response);
+    setTitle(response.data.title);
+    setContent(response.data.content);
+    setSummary(response.data.summary);
+    setCategoryName(response.data.Category.name);
+    setImage(response.data.image);
+    // setCategories(response.data.categories);
+  };
+
+  console.log(categoryName)
+
+  useEffect(() => {
+    getUserById();
+    getCategory();
+  }, []);
+
 
   const updateData = async (e) => {
     console.log(image);
@@ -51,18 +67,6 @@ const EditData = () => {
       console.log(error.response);
     }
   };
-
-  const getUserById = async () => {
-    const response = await instance.get(`/news/detail/${id}`);
-    console.log(response);
-    setTitle(response.data.title);
-    setContent(response.data.content);
-    setSummary(response.data.summary);
-    setCategoryName(response.data.Category.name);
-    setImage(response.data.image);
-    // setCategories(response.data.categories);
-  };
-  console.log()
 
   return (
     <>

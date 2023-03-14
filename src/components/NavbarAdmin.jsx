@@ -10,27 +10,7 @@ const Logout = () => {
 };
 
 const NavbarAdmin = ({ setNews, ...rest }) => {
-  const [keyword, setKeyword] = useState("");
-  const [title, setTitle] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
-      .then((res) => {
-        setNews(res.data);
-      });
-  }, [title, keyword]);
-
-  const searchByTitle = (e) => {
-    e.preventDefault();
-    setKeyword(title);
-    axios
-      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
-      .then((res) => {
-        setNews(res.data);
-      });
-  };
-
+  
   return (
     <>
       <nav
@@ -115,7 +95,7 @@ const NavbarAdmin = ({ setNews, ...rest }) => {
                       id="logout"
                       data-bs-backdrop="static"
                       data-bs-keyboard="false"
-                      tabindex="-1"
+                      tabIndex="-1"
                       aria-labelledby="logoutLabel"
                       aria-hidden="true">
                       <div className="modal-dialog">

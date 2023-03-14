@@ -6,6 +6,7 @@ import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NavbarAdmin from "../components/NavbarAdmin";
+import instance from "../libs/axios";
 
 const FormCountry = () => {
   const [users, setUser] = useState([]);
@@ -15,15 +16,13 @@ const FormCountry = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get(
-      "https://ayfnfebe29.up.railway.app/country"
-    );
+    const response = await instance.get("/country");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://ayfnfebe29.up.railway.app/country/${id}`);
+      await instance.delete(`/country/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);
@@ -64,28 +63,29 @@ const FormCountry = () => {
               <td>{index + 1}</td>
               <td>{user.name}</td>
               <td>
-                <Link to={`/editCountry/${user.id}`} 
-                 className="mx-1"
-                style={{
-                  padding: "5px",
-                  backgroundColor: "green",
-                  color: "white",
-                  textDecoration: "none",
-                  borderRadius: "4px",
-                }}>
+                <Link
+                  to={`/editCountry/${user.id}`}
+                  className="mx-1"
+                  style={{
+                    padding: "5px",
+                    backgroundColor: "green",
+                    color: "white",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                  }}>
                   <FontAwesomeIcon icon={faEdit} />
                   Edit
                 </Link>
-                <Link onClick={() => deleteUser(user.id)}
-                 className="mx-1"
-                style={{
-                  padding: "5px",
-                  backgroundColor: "red",
-                  color: "white",
-                  textDecoration: "none",
-                  borderRadius: "4px",
-                }}
-                >
+                <Link
+                  onClick={() => deleteUser(user.id)}
+                  className="mx-1"
+                  style={{
+                    padding: "5px",
+                    backgroundColor: "red",
+                    color: "white",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                  }}>
                   <FontAwesomeIcon icon={faTrash} />
                   Delete
                 </Link>
