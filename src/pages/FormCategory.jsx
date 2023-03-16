@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import NavbarAdmin from "../components/NavbarAdmin";
-
+import instance from "../libs/axios";
 const FormCategory = () => {
   const [users, setUser] = useState([]);
 

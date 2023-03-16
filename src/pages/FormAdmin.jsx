@@ -6,13 +6,18 @@ import Footer from "../components/Footer";
 import axios from "../libs/axios";
 import NavbarAdmin from "../components/NavbarAdmin";
 import { MdPublish, MdUnpublished } from "react-icons/md";
+import instance from "../libs/axios";
 
 const FormAdmin = () => {
-  const [published, setPublished] = useState([]);
-  const [unPublished, setUnPublished] = useState([]);
+  const [published, setPublished] = useState([]); /* berita sudah dipublish */
+  const [unPublished, setUnPublished] = useState(
+    []
+  ); /* berita belum di publish */
   const [allNews, setAllNews] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  console.log(unPublished, "berita belum di publish");
+  console.log(published, "berita sudah di publish");
   useEffect(() => {
     getPublished();
     getUnPublished();
@@ -20,26 +25,19 @@ const FormAdmin = () => {
     setLoading(false);
   }, []);
 
-  const getPublished = async () => {
-    const response = await axios.get(
-      "https://ayfnfebe29.up.railway.app/news/all"
-    );
-    setPublished(response.data);
-  };
-
   const getUnPublished = async () => {
-    const response = await axios.get(
-      "https://ayfnfebe29.up.railway.app/news/needProceed"
-    );
+    const response = await instance.get("/news/needProceed");
     setUnPublished(response.data);
   };
 
+  const getPublished = async () => {
+    const response = await instance.get("/news/proceeded");
+    setPublished(response.data);
+  };
+
   const getAllNews = async () => {
-    const response1 = await axios.get(
-      "https://ayfnfebe29.up.railway.app/news/all"
-    );
-    const response2 = await axios.get(
-      "https://ayfnfebe29.up.railway.app/news/needProceed"
+    const response1 = await instance.get("/news/all");
+    const response2 = await instance.get("/news/needProceed"
     );
     let tempArr = response1.data.concat(response2.data);
     setAllNews(tempArr.sort((x, y) => x.id - y.id));
@@ -47,33 +45,12 @@ const FormAdmin = () => {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`/news/${id}`);
+      await instance.delete(`/news/${id}`);
       getPublished();
       getUnPublished();
     } catch (error) {
       console.log(error);
     }
-
-    var config = {
-      method: "post",
-      url: `/news`,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-
-    axios(config).then(function (response) {
-      log("ini respon create: ", response);
-      swal({
-        title: "Program berhasil dibuat!",
-        icon: "success",
-        button: "OK!",
-      });
-      Navigate("/organization");
-    });
-    // .catch(function (eror) {
-    //   log('ini eror create: ', error);
-    // });
   };
 
   if (isLoading) {
@@ -81,7 +58,6 @@ const FormAdmin = () => {
   } else {
     return (
       <>
-
         <NavbarAdmin />
         <h2
           className="flex items-center justify-between my-4"
@@ -107,7 +83,7 @@ const FormAdmin = () => {
                   <tr key={news.id}>
                     <td>{index + 1}</td>
                     <td>{news.title}</td>
-                    <td>{news.content}  </td>
+                    <td>{news.content} </td>
                     <td>{news.summary}</td>
                     <td>
                       <img src={news.image} alt="" style={{ width: "150px" }} />
@@ -116,52 +92,50 @@ const FormAdmin = () => {
                     <td>
                       <div className="">
                         {news.isPublished ? (
-
-                          
                           <Link
                             style={{
                               backgroundColor: "purple",
                               color: "white",
                               textDecoration: "none",
                               borderRadius: "4px",
-                              display : "inline-block",
-                              padding : "6px",
-                              margin : "6px"
+                              display: "inline-block",
+                              padding: "6px",
+                              margin: "6px",
                             }}
-                            onClick={() => unpublishUser(news.id)}>
+                            to={`/unpublishnews/${news.id}`}
+                            >
                             <MdUnpublished />
                             UnPublish
                           </Link>
                         ) : (
-                          <Link className="" to={`/publishnews/${news.id}`}
-                          
-                          style={{
-                            backgroundColor: "green",
-                            color: "white",
-                            textDecoration: "none",
-                            borderRadius: "4px",
-                            display : "inline-block",
-                            padding : "6px",
-                            margin : "6px"
-                          }}
-                          >
+                          <Link
+                            className=""
+                            to={`/publishnews/${news.id}`}
+                            style={{
+                              backgroundColor: "green",
+                              color: "white",
+                              textDecoration: "none",
+                              borderRadius: "4px",
+                              display: "inline-block",
+                              padding: "6px",
+                              margin: "6px",
+                            }}>
                             <MdPublish />
                             Publish
                           </Link>
                         )}
-                        <Link className="" onClick={() => deleteUser(news.id)}
-                        
-                        style={{
-                          backgroundColor: "red",
-                          color: "white",
-                          textDecoration: "none",
-                          borderRadius: "4px",
-                          display : "inline-block",
-                          padding : "6px",
-                          margin : "6px"
-                        }}
-                        
-                        >
+                        <Link
+                          className=""
+                          onClick={() => deleteUser(news.id)}
+                          style={{
+                            backgroundColor: "red",
+                            color: "white",
+                            textDecoration: "none",
+                            borderRadius: "4px",
+                            display: "inline-block",
+                            padding: "6px",
+                            margin: "6px",
+                          }}>
                           <FontAwesomeIcon icon={faTrash} />
                           Delete
                         </Link>

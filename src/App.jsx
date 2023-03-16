@@ -26,6 +26,7 @@ import AseanDetail from "./pages/AseanDetail";
 import LoginAdmin from "./pages/LoginAdmin";
 import FormAdmin from "./pages/FormAdmin";
 import PublishNews from "./pages/PublishNews";
+import UnPublishNews from './pages/UnPublishNews';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/editCountry/:id" element={<EditCountry />} />
         <Route path="/formAdmin" element={<FormAdmin />} />
         <Route path="/publishnews/:id" element={<PublishNews />} />
+        <Route path="/unpublishnews/:id" element={<UnPublishNews/>} />
       </Routes>
     </>
   );

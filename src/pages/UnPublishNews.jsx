@@ -1,58 +1,59 @@
-import React, { useState, useEffect } from "react";
-// import axios from "axios";
-import instance from "../libs/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import NavbarAdmin from "../components/NavbarAdmin";
-import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
+import instance from "../libs/axios";
 
-const PublishNews = () => {
+const UnPublishNews = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [summary, setSummary] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [categories, setCategories] = useState([]);
   const [image, setImage] = useState();
+  const [isPublished, setIsPublished] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
 
+
+  console.log(isPublished)
   useEffect(() => {
-    getUserById();
     getCategory();
+    getNewsById();
   }, []);
 
   const getCategory = async () => {
-    const response = await instance.get(`/category`);
-
-    console.log(response);
+    const response = await instance.get("/category");
     setCategories(response.data);
-    // setErrMsg('');
   };
 
-  const getUserById = async () => {
+  const getNewsById = async () => {
     const response = await instance.get(`/news/detail/${id}`);
-    console.log(response);
     setTitle(response.data.title);
     setContent(response.data.content);
     setSummary(response.data.summary);
     setCategoryName(response.data.Category.name);
+    setIsPublished(response.data.isPublished);
     setImage(response.data.image);
   };
 
+  const handleChecked = async () => {
+    setIsPublished(!isPublished);
+  };
+
   const data = async (e) => {
-    // console.log(image);
     e.preventDefault();
     const formData = new FormData();
 
     formData.append("title", title);
     formData.append("content", content);
     formData.append("summary", summary);
-    formData.append("image", image);
+    formData.append("image", image),
     formData.append("categoryId", categoryName);
-    // console.log(data.get('image'))
+    formData.append("isPublished", isPublished);
+
     try {
-      await instance.put(`/news/proceed/${id}`, formData, {
+      await instance.put(`/news/unproceed/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -64,19 +65,19 @@ const PublishNews = () => {
   };
 
   return (
-    <>
+    <div>
       <NavbarAdmin />
       <div className="container">
         <div className="row justify-content-center">
-          <div className="flex items-center justify-between my-4 text-center">
-            <h2>News</h2>
+          <div className="flex item-center justify-between my-4 text-center">
+            <h2>Unpublish News</h2>
           </div>
-
           <Link to={"/formadmin"}>
             <button type="button" className="btn btn-lg">
               <MdArrowBack />
             </button>
           </Link>
+
           <div
             className="news-detail-background container px-5 py-4 rounded-4"
             style={{ backgroundColor: "#F9FBFF" }}>
@@ -141,28 +142,30 @@ const PublishNews = () => {
                       </option>
                     );
                   })}
-
-                  {/* <option value={categoryName} selected>
-                    {categoryName}
-                  </option>
-
-                  {categories.map((item, id) => {
-                    return <option value={item.id}>{item.name}</option>;
-                  })} */}
                 </select>
               </div>
+
+              <div className="form-group mb-3">please</div>
+              <label htmlFor="categories">Publish</label>
+
+              <input
+                type="checkbox"
+                id="isPublished"
+                name="isPublished"
+                checked={!isPublished}
+                onChange={handleChecked}
+              />
               <div className="mb-2 mt-4">
                 <button type="submit" className="btn btn-success">
-                  Publish
+                  Unpublish
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 
-export default PublishNews;
+export default UnPublishNews;
