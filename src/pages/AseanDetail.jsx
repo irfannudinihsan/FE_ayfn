@@ -39,7 +39,7 @@ function AseanDetail () {
       {news ? (
         <div className="container mt-3" key={news.id}>
           <div className="berita-body container mx-5 mt-4">
-            <CategoryDetailCard
+            <AseanDetailCard
               title={news.title}
               createdAt={news.createdAt}
               countryName={news.Country.name}

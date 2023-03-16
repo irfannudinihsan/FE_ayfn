@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MdLogin, MdLogout, MdShoppingCart } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import instance from "../libs/axios";
 
 const primary = "#0D6FFB";
 const Logout = () => {
@@ -10,9 +11,27 @@ const Logout = () => {
   location.href = "/";
 };
 
-const Navbar = ({ id, setNews }) => {
-  const [keyword, setKeyword] = useState("");
-  const [title, setTitle] = useState("");
+const Navbar = () => {
+  const [categories, setCategories] = useState([]);
+  const [countries, setCountries] = useState([]);
+  
+
+
+  
+const getCategory = async () => {
+  const response = await instance.get("/category")
+  setCategories(response.data)
+}
+
+  const getCountry = async () => {
+    const response = await instance.get("/country");
+    setCountries(response.data);
+  };
+
+  useEffect(() => {
+    getCountry();
+    getCategory();
+  }, []);
 
   return (
     <>
@@ -69,7 +88,16 @@ const Navbar = ({ id, setNews }) => {
                 </span>
 
                 <ul className="dropdown-menu">
-                  <li>
+
+                  {categories.map((category) => (
+                    <li  key={category.id} >
+
+                      <Link to={`/category/${category.id}`} className="dropdown-item" >
+                        {category.name}
+                      </Link>
+                    </li>
+                  ))}
+                  {/*  <li>
                     <Link to={`category/${1}`} className="dropdown-item">
                       Economy
                     </Link>
@@ -93,7 +121,7 @@ const Navbar = ({ id, setNews }) => {
                     <Link to={`category/${5}`} className="dropdown-item">
                       Other
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 
@@ -109,7 +137,16 @@ const Navbar = ({ id, setNews }) => {
                 </span>
 
                 <ul className="dropdown-menu ">
-                  <li>
+                  {countries.map((country) => (
+                    <li key={country.id}>
+                      <Link
+                        to={`/country/${country.id}`}
+                        className="dropdown-item">
+                        {country.name}
+                      </Link>
+                    </li>
+                  ))}
+                  {/* <li>
                     <Link to={`country/${1}`} className="dropdown-item ">
                       Brunei Darussalam
                     </Link>
@@ -158,7 +195,7 @@ const Navbar = ({ id, setNews }) => {
                     <Link to={`country/${10}`} className="dropdown-item">
                       Vietnam
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 
@@ -173,11 +210,9 @@ const Navbar = ({ id, setNews }) => {
               </li>
             </ul>
             <ul className="nav pe-5 justify-content-start">
-
               <li className="nav-item ">
                 {localStorage.getItem("token") ? (
                   <>
-
                     <Link
                       to={"/data"}
                       style={{ color: "white", display: "inline-block" }}
