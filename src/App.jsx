@@ -1,6 +1,7 @@
 import './App.css'
 import { Routes, Route, Form } from "react-router-dom";
 import Home from "./pages/Home";
+import NewsDetailHome from './pages/NewsDetailHome';
 import News from "./pages/News";
 import Login from "./pages/Login";
 import NewsDetail from "./pages/NewsDetail";
@@ -33,6 +34,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/newsdetailhome/:id" element={<NewsDetailHome />} />
         <Route path="/news" element={<News />} />
         <Route path="/news/newsdetail/:id" element={<NewsDetail />} />
         <Route path="/trending" element={<Trending />} />

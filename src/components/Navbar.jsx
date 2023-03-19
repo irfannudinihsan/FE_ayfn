@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import instance from "../libs/axios";
 
-const primary = "#0D6FFB";
 const Logout = () => {
   localStorage.clear();
   location.href = "/";
@@ -14,14 +13,11 @@ const Logout = () => {
 const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const [countries, setCountries] = useState([]);
-  
 
-
-  
-const getCategory = async () => {
-  const response = await instance.get("/category")
-  setCategories(response.data)
-}
+  const getCategory = async () => {
+    const response = await instance.get("/category");
+    setCategories(response.data);
+  };
 
   const getCountry = async () => {
     const response = await instance.get("/country");
@@ -35,9 +31,7 @@ const getCategory = async () => {
 
   return (
     <>
-      <nav
-        className="navbar navbar-expand-lg"
-        style={{ padding: 15, background: primary }}>
+      <nav className="navbar navbar-expand-lg" style={{ padding: 15 }}>
         <div className="container">
           <span className="navbar-brand">
             <Link to={"/"}>
@@ -62,7 +56,7 @@ const getCategory = async () => {
                 <Link
                   to={"/news"}
                   style={{ color: "white", marginRight: "2rem" }}
-                  className="nav-link active"
+                  className="nav-link "
                   aria-current="page">
                   News
                 </Link>
@@ -71,7 +65,7 @@ const getCategory = async () => {
                 <Link
                   to={"/trending"}
                   style={{ color: "white", marginRight: "2rem" }}
-                  className="nav-link active"
+                  className="nav-link"
                   aria-current="page">
                   Trending
                 </Link>
@@ -88,40 +82,15 @@ const getCategory = async () => {
                 </span>
 
                 <ul className="dropdown-menu">
-
                   {categories.map((category) => (
-                    <li  key={category.id} >
-
-                      <Link to={`/category/${category.id}`} className="dropdown-item" >
+                    <li key={category.id}>
+                      <Link
+                        to={`/category/${category.id}`}
+                        className="dropdown-item">
                         {category.name}
                       </Link>
                     </li>
                   ))}
-                  {/*  <li>
-                    <Link to={`category/${1}`} className="dropdown-item">
-                      Economy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`category/${2}`} className="dropdown-item">
-                      Environment
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`category/${3}`} className="dropdown-item">
-                      Health
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`category/${4}`} className="dropdown-item">
-                      Politic
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`category/${5}`} className="dropdown-item">
-                      Other
-                    </Link>
-                  </li> */}
                 </ul>
               </li>
 
@@ -146,56 +115,6 @@ const getCategory = async () => {
                       </Link>
                     </li>
                   ))}
-                  {/* <li>
-                    <Link to={`country/${1}`} className="dropdown-item ">
-                      Brunei Darussalam
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${2}`} className="dropdown-item">
-                      Cambodia
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${3}`} className="dropdown-item">
-                      Indonesia
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${4}`} className="dropdown-item">
-                      Laos
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${5}`} className="dropdown-item">
-                      Malaysia
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${6}`} className="dropdown-item">
-                      Myanmar
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${7}`} className="dropdown-item">
-                      Philippines
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${8}`} className="dropdown-item">
-                      Singapore
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${9}`} className="dropdown-item">
-                      Thailand
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`country/${10}`} className="dropdown-item">
-                      Vietnam
-                    </Link>
-                  </li> */}
                 </ul>
               </li>
 
@@ -203,7 +122,7 @@ const getCategory = async () => {
                 <Link
                   to={"/about"}
                   style={{ color: "white" }}
-                  className="nav-link active"
+                  className="nav-link "
                   aria-current="page">
                   About Us
                 </Link>
@@ -216,13 +135,13 @@ const getCategory = async () => {
                     <Link
                       to={"/data"}
                       style={{ color: "white", display: "inline-block" }}
-                      className="nav-link active">
+                      className="nav-link ">
                       Data
                     </Link>
                     <Link
                       to={"/profileData"}
                       style={{ color: "white", display: "inline-block" }}
-                      className="nav-link active">
+                      className="nav-link ">
                       Profile
                     </Link>
 
@@ -237,7 +156,7 @@ const getCategory = async () => {
                         borderRadius: 8,
                         display: "inline-block",
                       }}
-                      className="nav-link active fw-bold"
+                      className="nav-link  fw-bold"
                       data-bs-toggle="modal"
                       data-bs-target="#logout">
                       Logout
@@ -285,18 +204,7 @@ const getCategory = async () => {
                   </>
                 ) : (
                   <>
-                    <Link
-                      to={"/login"}
-                      style={{
-                        color: "#0D6FFB",
-                        paddingRight: 16,
-                        paddingTop: 8,
-                        paddingBottom: 8,
-                        paddingLeft: 16,
-                        background: "white",
-                        borderRadius: 8,
-                      }}
-                      className="nav-link active fw-bold">
+                    <Link to={"/login"} className="login  fw-bold">
                       Login
                     </Link>
                   </>
