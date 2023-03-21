@@ -19,7 +19,6 @@ const [isLoading, setIsLoading] = useState(true)
   const params = useParams();
   const { id } = params;
 
-  console.log(news);
 
   const getCountry = async () => {
     const response = await instance.get("/country");
@@ -72,11 +71,9 @@ const [isLoading, setIsLoading] = useState(true)
             </h5>
           </div>
           <div className="col-md-12 col-lg-6">
-            <img src={peopleTalking} className="img-fluid" width="570" />
+            <img src={peopleTalking} className="img-fluid" width="600" />
           </div>
-        </div>
-
-        
+        </div>        
       </div>
       <div className="news-home">
         <div className="container">

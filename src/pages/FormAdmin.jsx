@@ -37,8 +37,7 @@ const FormAdmin = () => {
 
   const getAllNews = async () => {
     const response1 = await instance.get("/news/all");
-    const response2 = await instance.get("/news/needProceed"
-    );
+    const response2 = await instance.get("/news/needProceed");
     let tempArr = response1.data.concat(response2.data);
     setAllNews(tempArr.sort((x, y) => x.id - y.id));
   };
@@ -46,8 +45,8 @@ const FormAdmin = () => {
   const deleteUser = async (id) => {
     try {
       await instance.delete(`/news/${id}`);
-      getPublished();
-      getUnPublished();
+      // getPublished();
+    /*   getUnPublished(); */
     } catch (error) {
       console.log(error);
     }
@@ -102,8 +101,7 @@ const FormAdmin = () => {
                               padding: "6px",
                               margin: "6px",
                             }}
-                            to={`/unpublishnews/${news.id}`}
-                            >
+                            to={`/unpublishnews/${news.id}`}>
                             <MdUnpublished />
                             UnPublish
                           </Link>

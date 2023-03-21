@@ -13,12 +13,12 @@ const EditData = () => {
   const [summary, setSummary] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
   const [image, setImage] = useState();
   const navigate = useNavigate();
   const { id } = useParams();
 
- 
-
+  console.log(categoryId, "ini cat");
   const getCategory = async () => {
     const response = await instance.get(`/category`);
 
@@ -35,19 +35,17 @@ const EditData = () => {
     setSummary(response.data.summary);
     setCategoryName(response.data.Category.name);
     setImage(response.data.image);
-    // setCategories(response.data.categories);
+    setCategoryId(response.data.categoryId);
   };
 
-  console.log(categoryName)
+  console.log(categoryName);
 
   useEffect(() => {
     getUserById();
     getCategory();
   }, []);
 
-
   const updateData = async (e) => {
-    console.log(image);
     e.preventDefault();
     const formData = new FormData();
 
@@ -62,7 +60,7 @@ const EditData = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      // navigate("/");
+      navigate("/data");
     } catch (error) {
       console.log(error.response);
     }
@@ -102,13 +100,14 @@ const EditData = () => {
               <div className="form-group  my-3">
                 <label htmlFor="image">
                   <h5>Image</h5>
+                <img src={image} alt="" style={{ width: 200 }} />
                 </label>
                 <input
                   onChange={(e) => setImage(e.target.files[0])}
                   type="file"
-                  className="form-control border-0"
+                  className="form-control border-0 mt-2"
                   placeholder="Image Link"
-                  required
+                  required={false}
                 />
               </div>
               <div className="field my-3">
@@ -147,11 +146,9 @@ const EditData = () => {
                   id="categories"
                   className="form-select border-0"
                   onChange={(e) => setCategoryName(e.target.value)}
+                  defaultValue={categoryName}
                   required>
-                  {/* <option value="">
-                    Select Category
-                  </option> */}
-                  {categories.map((item, id) => {
+                  {categories.map((item) => {
                     return (
                       <option key={item.id} value={item.id}>
                         {item.name}

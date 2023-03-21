@@ -44,6 +44,7 @@ function NewsDetail() {
             createdAt={news.createdAt}
             image={news.image}
             content={news.content}
+            countryName={news.Country.name}
           />
         </div>
       ) : (

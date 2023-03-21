@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { useState } from "react";
 import instance from "../libs/axios";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEdit = () => {
   const [image, setImage] = useState();
@@ -12,6 +13,7 @@ const ProfileEdit = () => {
   const [fullName, setFullName] = useState("");
   const [countryName, setCountryName] = useState("");
   const [countries, setCountries] = useState([]);
+  const navigate = useNavigate();
 
 
   const getCountry = async () => {
@@ -23,7 +25,6 @@ const ProfileEdit = () => {
 
   const getUser = async () => {
     const response = await instance.get("/user");
-    console.log(response.data, "user");
     setEmail(response.data.data.email);
     setPassword(response.data.data.password)
     setFullName(response.data.data.UserDetail.fullName);
@@ -47,14 +48,14 @@ const ProfileEdit = () => {
     formData.append("email", email);
     formData.append("password", password);
     formData.append("fullName", fullName);
-    formData.append("countryId", countries);
+    formData.append("countryId", countryName);
     try {
       await instance.put("/user", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      
+      navigate("/profileData")
     } catch (error) {
       console.log(error.response);
     }
@@ -81,12 +82,13 @@ const ProfileEdit = () => {
               <div className="field my-3">
                 <label htmlFor="image">
                   <h5>Image</h5>
+                  <img src={image} alt="" style={{ width: 200 }} />
                   <input
                     onChange={(e) => setImage(e.target.files[0])}
                     type="file"
                     className="form-control border-0"
                     placeholder="Image Link"
-                    required
+                    required={false}
                   />
                 </label>
               </div>
