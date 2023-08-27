@@ -49,7 +49,7 @@ const AddData = () => {
   // }, []);
 
   useEffect(() => {
-    axios.get(`http://be.aseanyouthforumnews.my.id/category`).then((res) => {
+    axios.get(`https://be.aseanyouthforumnews.my.id/category`).then((res) => {
       setCategories(res.data);
     });
     // setErrMsg('');

@@ -10,7 +10,7 @@ function News() {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    axios("http://be.aseanyouthforumnews.my.id/news/all").then((res) => {
+    axios("https://be.aseanyouthforumnews.my.id/news/all").then((res) => {
       setNews(res.data);
       setIsLoading(false);
     });
@@ -20,7 +20,7 @@ function News() {
     e.preventDefault();
     setKeyword(title);
     axios
-      .get(`http://be.aseanyouthforumnews.my.id/news/search?title=${keyword}`)
+      .get(`https://be.aseanyouthforumnews.my.id/news/search?title=${keyword}`)
       .then((res) => {
         setNews(res.data);
       });

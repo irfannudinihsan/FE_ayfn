@@ -34,7 +34,7 @@ const RegisterData = () => {
     data.append("countryId", countryId);
     console.log(data.get("image"));
     axios
-      .post(`http://be.aseanyouthforumnews.my.id/auth/register`, data)
+      .post(`https://be.aseanyouthforumnews.my.id/auth/register`, data)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -55,7 +55,7 @@ const RegisterData = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://be.aseanyouthforumnews.my.id/country`).then((res) => {
+    axios.get(`https://be.aseanyouthforumnews.my.id/country`).then((res) => {
       setCountries(res.data);
     });
     setErrMsg("");

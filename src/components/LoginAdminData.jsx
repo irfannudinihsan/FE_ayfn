@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
     console.log({ email, password });
     axios
-      .post(`http://be.aseanyouthforumnews.my.id/auth/login`, {
+      .post(`https://be.aseanyouthforumnews.my.id/auth/login`, {
         email: email,
         password: password,
       })

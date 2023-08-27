@@ -6,7 +6,7 @@ import CategoryCard from "../components/CategoryCard";
 import { useParams } from "react-router-dom";
 import React from "react";
 
-const URL = "http://be.aseanyouthforumnews.my.id/news/all/category/";
+const URL = "https://be.aseanyouthforumnews.my.id/news/all/category/";
 
 function Category() {
   const params = useParams();

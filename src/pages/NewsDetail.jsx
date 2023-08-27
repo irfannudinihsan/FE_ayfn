@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router-dom";
-const URL = "http://be.aseanyouthforumnews.my.id/news/detail/";
+const URL = "https://be.aseanyouthforumnews.my.id/news/detail/";
 import { MdArrowBack } from "react-icons/md";
 
 function NewsDetail() {
