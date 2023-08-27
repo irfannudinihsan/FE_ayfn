@@ -6,9 +6,7 @@ import CategoryCard from "../components/CategoryCard";
 import { useParams } from "react-router-dom";
 import React from "react";
 
-
-
-const URL = "https://be30-production.up.railway.app/news/all/category/";
+const URL = "http://be.aseanyouthforumnews.my.id/news/all/category/";
 
 function Category() {
   const params = useParams();
@@ -29,23 +27,21 @@ function Category() {
   return (
     <>
       <Navbar />
-    <div className="container">
-      {news.map((category) => {
-        return (
-          <div
-            className=""
-            key={category.id}>
-            <CategoryCard
-              id={category.id}
-              image={category.image}
-              title={category.title}
-              summary={category.summary}
-              categoryName={category.Category.name}
-              createdAt={category.createdAt}
-            />
-          </div>
-        );
-      })}
+      <div className="container">
+        {news.map((category) => {
+          return (
+            <div className="" key={category.id}>
+              <CategoryCard
+                id={category.id}
+                image={category.image}
+                title={category.title}
+                summary={category.summary}
+                categoryName={category.Category.name}
+                createdAt={category.createdAt}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <Footer />

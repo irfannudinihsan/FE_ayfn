@@ -10,7 +10,7 @@ function News() {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    axios("https://be30-production.up.railway.app/news/all").then((res) => {
+    axios("http://be.aseanyouthforumnews.my.id/news/all").then((res) => {
       setNews(res.data);
       setIsLoading(false);
     });
@@ -20,7 +20,7 @@ function News() {
     e.preventDefault();
     setKeyword(title);
     axios
-      .get(`https://be30-production.up.railway.app/news/search?title=${keyword}`)
+      .get(`http://be.aseanyouthforumnews.my.id/news/search?title=${keyword}`)
       .then((res) => {
         setNews(res.data);
       });
@@ -51,7 +51,7 @@ function News() {
             style={{
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
-              background: "#0D6FFB"
+              background: "#0D6FFB",
             }}
             onClick={searchByTitle}>
             Search

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import axios from "../libs/axios";
 
-
 const AddData = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -19,7 +18,6 @@ const AddData = () => {
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
-  
   const saveData = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -51,7 +49,7 @@ const AddData = () => {
   // }, []);
 
   useEffect(() => {
-    axios.get(`https://be30-production.up.railway.app/category`).then((res) => {
+    axios.get(`http://be.aseanyouthforumnews.my.id/category`).then((res) => {
       setCategories(res.data);
     });
     // setErrMsg('');
@@ -137,7 +135,7 @@ const AddData = () => {
                     type="text"
                     // className="input"
                     value={summary}
-                    editorState={editorState}
+                    // editorState={editorState}
                     // onChange={handleEditorChange}
                     onChange={(e) => setSummary(e.target.value)}
                     placeholder="Summary"

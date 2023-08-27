@@ -8,7 +8,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdArrowBack } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const URL = "https://be30-production.up.railway.app/news/detail/";
+const URL = "http://be.aseanyouthforumnews.my.id/news/detail/";
 
 function TrendingDetail() {
   const params = useParams();

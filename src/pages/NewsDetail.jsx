@@ -6,9 +6,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router-dom";
-const URL = "https://be30-production.up.railway.app/news/detail/";
+const URL = "http://be.aseanyouthforumnews.my.id/news/detail/";
 import { MdArrowBack } from "react-icons/md";
-
 
 function NewsDetail() {
   const params = useParams();
@@ -23,7 +22,7 @@ function NewsDetail() {
   }, []);
 
   console.log(news);
-    // console.log(news.User.UserDetail.fullName)
+  // console.log(news.User.UserDetail.fullName)
 
   return (
     <>
