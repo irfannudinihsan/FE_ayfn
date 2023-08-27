@@ -51,7 +51,7 @@ const AddData = () => {
   // }, []);
 
   useEffect(() => {
-    axios.get(`https://ayfnfebe29.up.railway.app/category`).then((res) => {
+    axios.get(`https://be30-production.up.railway.app/category`).then((res) => {
       setCategories(res.data);
     });
     // setErrMsg('');

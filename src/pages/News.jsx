@@ -10,7 +10,7 @@ function News() {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    axios("https://ayfnfebe29.up.railway.app/news/all").then((res) => {
+    axios("https://be30-production.up.railway.app/news/all").then((res) => {
       setNews(res.data);
       setIsLoading(false);
     });
@@ -20,7 +20,7 @@ function News() {
     e.preventDefault();
     setKeyword(title);
     axios
-      .get(`https://ayfnfebe29.up.railway.app/news/search?title=${keyword}`)
+      .get(`https://be30-production.up.railway.app/news/search?title=${keyword}`)
       .then((res) => {
         setNews(res.data);
       });

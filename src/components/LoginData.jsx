@@ -13,7 +13,7 @@ function Login ()  {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({email, password});
-        axios.post(`https://ayfnfebe29.up.railway.app/auth/login`, { 
+        axios.post(`https://be30-production.up.railway.app/auth/login`, { 
         email: email,
         password: password,
      })

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 // import BackComponent from "../components/BackComponent";
 
-const URL = "https://ayfnfebe29.up.railway.app/news/detail/";
+const URL = "https://be30-production.up.railway.app/news/detail/";
 
 function CategoryDetail() {
   const params = useParams();

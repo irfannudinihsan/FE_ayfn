@@ -6,7 +6,7 @@ import AseanCard from '../components/AseanCard';
 import { useParams } from "react-router-dom";
 import React from "react";
 
-const URL = "https://ayfnfebe29.up.railway.app/news/all/country/"
+const URL = "https://be30-production.up.railway.app/news/all/country/"
 
 function Asean(){
     const params = useParams();

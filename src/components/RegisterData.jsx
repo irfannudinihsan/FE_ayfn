@@ -29,7 +29,7 @@ const RegisterData = () => {
         data.append('image', image);
         data.append('countryId', countryId);
         console.log(data.get('image'))
-        axios.post(`https://ayfnfebe29.up.railway.app/auth/register`,data
+        axios.post(`https://be30-production.up.railway.app/auth/register`,data
         ).then(res => {
             console.log(res);
             console.log(res.data);
@@ -47,7 +47,7 @@ const RegisterData = () => {
     }
     
     useEffect(() => {
-        axios.get(`https://ayfnfebe29.up.railway.app/country`)
+        axios.get(`https://be30-production.up.railway.app/country`)
         .then(res => {
             setCountries(res.data)
         });

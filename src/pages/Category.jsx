@@ -8,7 +8,7 @@ import React from "react";
 
 
 
-const URL = "https://ayfnfebe29.up.railway.app/news/all/category/";
+const URL = "https://be30-production.up.railway.app/news/all/category/";
 
 function Category() {
   const params = useParams();
